@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Phoenix Destitute</title>
+        <link rel="stylesheet" href="css/Reset.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <!-- This is the header at the top of the page -->
+        <header class="header-main">
+            <div class="header-main-welcome">
+                <h1>Welcome to Phoenix Destitute! An epic adventure awaits you!</h1>
+                <ul><li>Version: <span class="version">0</span></li></ul>
+            </div>
+        </header>
+        <!-- These will be toggle buttons for the various events that open up -->
+        <div class="btn-wrapper">
+            <ul class="btn btn-toggle-stats" onclick="toggleStatsMenu()"><li>Stats</li></ul>
+            <ul class="btn btn-toggle-inventory" onclick="toggleInventoryMenu()"><li>Inventory</li></ul>
+            <ul class="btn btn-toggle-shop" onclick="toggleShopMenu()"><li>Shop</li></ul>
+            <ul class="btn btn-toggle-gather" onclick="toggleGatherMenu()"><li>Gathering</li></ul>
+            <ul class="btn btn-toggle-rebuild" onclick="toggleRebuildMenu()"><li>Rebuilding</li></ul>
+            <ul class="btn btn-toggle-production" onclick="toggleProductionMenu()"><li>Production</li></ul>
+        </div>
+        <!-- End toggle buttons -->
+        <!-- This is the console/Game box -->
+        <main>
+            <div class="wrapper-main-row">
+                <div class="console-box-wrapper">
+                    <div class="console-title">
+                        <h2>Your Journey happens here!</h2>
+                    </div>
+                    <div class="console-box">
+                        <div id="placeholder"></div>
+                        <!--
+                        PLACEHOLDER: THIS IS WHERE YOUR CHOICES ARE INPUT
+                        -->
+                        <p>Would you like to begin your adventure? Type yes or no.</p>
+                    </div>
+                    <div class="user-input-box">
+                        <form class="form" onsubmit="return false;">
+                            <input type="text" autocomplete="off" id="command_line" placeholder="User Input Here" autofocus="autofocus" />
+                        </form>
+                    </div>
+                </div>
+                <div class="wrapper-stats">
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Stats:</h2>
+                            <li>Name: <span id="playerInfo.name">None</span></li>
+                            <li>Gender: <span id="playerInfo.gender">None</span></li>
+                            <li>Class: <span id="playerInfo.classType">None</span></li>
+                            <li>Health: <span id="playerStats.health">None</span></li>
+                            <li>Mana: <span id="playerStats.mana">None</span></li>
+                            <li>Strength: <span id="playerStats.strength">None</span></li>
+                            <li>Defense: <span id="playerStats.defense">None</span></li>
+                            <li>Endurance: <span id="playerStats.endurance">None</span></li>
+                            <li>Intelligence: <span id="playerStats.intelligence">None</span></li>
+                            <li>Current Location: <span id="playerInfo.area">None</span></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- Gender Info Display Box -->
+                <div class="wrapper-gender-context">
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Male Gender Benefits:</h2>
+                            <li>Health: + <span id="male.health">None</span></li>
+                            <li>Mana: + <span id="male.mana">None</span></li>
+                            <li>Strength: + <span id="male.strength">None</span></li>
+                            <li>Defense: + <span id="male.defense">None</span></li>
+                            <li>Endurance: + <span id="male.endurance">None</span></li>
+                            <li>Intelligence: + <span id="male.intelligence">None</span></li>
+                        </ul>
+                    </aside>
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Female Gender Benefits:</h2>
+                            <li>Health: + <span id="female.health">None</span></li>
+                            <li>Mana: + <span id="female.mana">None</span></li>
+                            <li>Strength: + <span id="female.strength">None</span></li>
+                            <li>Defense: + <span id="female.defense">None</span></li>
+                            <li>Endurance: + <span id="female.endurance">None</span></li>
+                            <li>Intelligence: + <span id="female.intelligence">None</span></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- End Gender Info Display Box -->
+                <!-- Class Info Display Box -->
+                <div class="wrapper-class-context">
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Warrior Benefits:</h2>
+                            <li>Health: + <span id="warrior.health">None</span></li>
+                            <li>Mana: + <span id="warrior.mana">None</span></li>
+                            <li>Strength: + <span id="warrior.strength">None</span></li>
+                            <li>Defense: + <span id="warrior.defense">None</span></li>
+                            <li>Endurance: + <span id="warrior.endurance">None</span></li>
+                            <li>Intelligence: + <span id="warrior.intelligence">None</span></li>
+                        </ul>
+                    </aside>
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Archer Benefits:</h2>
+                            <li>Health: + <span id="archer.health">None</span></li>
+                            <li>Mana: + <span id="archer.mana">None</span></li>
+                            <li>Strength: + <span id="archer.strength">None</span></li>
+                            <li>Defense: + <span id="archer.defense">None</span></li>
+                            <li>Endurance: + <span id="archer.endurance">None</span></li>
+                            <li>Intelligence: + <span id="archer.intelligence">None</span></li>
+                        </ul>
+                    </aside>
+                    <aside class="stats-bar">
+                        <ul class="stats-box">
+                            <h2>Mage Benefits:</h2>
+                            <li>Health: + <span id="mage.health">None</span></li>
+                            <li>Mana: + <span id="mage.mana">None</span></li>
+                            <li>Strength: + <span id="mage.strength">None</span></li>
+                            <li>Defense: + <span id="mage.defense">None</span></li>
+                            <li>Endurance: + <span id="mage.endurance">None</span></li>
+                            <li>Intelligence: + <span id="mage.intelligence">None</span></li>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- End Class Info Display Box -->
+            </div>
+        </main>
+        <!-- Battle menu -->
+        <section class="battle-wrapper battle-border">
+            <div class="battle-border"><h2>Battle:</h2></div>
+            <ul class="battle-wrapper1">
+                <div class="status-wrapper battle-border">
+                    <li class="battle-border">Won: <span id="playerStats.won">0</span> Lost: <span id="playerStats.lost">0</span></li>
+                    <li class="battle-border">Enemy: <span id="enemyInfo.name">None</span></li>
+                    <div class="statusContainer">
+                        <div class="healthBarBlueE"></div>
+                        <div class="healthBarE"></div>
+                        <div id="enemyHealth"></div>
+                    </div>
+                    <div class="statusContainer">
+                        <div class="staminaBarBlueE"></div>
+                        <div class="staminaBarE"></div>
+                        <div id="enemyStamina"></div>
+                    </div>
+                    <div class="statusContainer">
+                        <div class="manaBarBlueE"></div>
+                        <div class="manaBarE"></div>
+                        <div id="enemyMana"></div>
+                    </div>
+                    <li class="battle-border">Player:</li>
+                    <div class="statusContainer">
+                        <div class="healthBarBlue"></div>
+                        <div class="healthBar"></div>
+                        <div id="playerHealth"></div>
+                    </div>
+                    <div class="statusContainer">
+                        <div class="staminaBarBlue"></div>
+                        <div class="staminaBar"></div>
+                        <div id="playerStamina"></div>
+                    </div>
+                    <div class="statusContainer">
+                        <div class="manaBarBlue"></div>
+                        <div class="manaBar"></div>
+                        <div id="playerMana"></div>
+                    </div>
+                </div>
+                <!-- Attack Buttons -->
+                <div class="attack-menu battle-border">
+                    <div class="battle-border"><h2>Attacks Happen Here!</h2></div>
+                    <div class="btn-wrapper" >
+                        <div class="stamina-attack">
+                            <button class="btn btn-stamina-driven-attacks" onclick="Punch()">Punch</button>
+                            <button class="btn btn-stamina-driven-attacks" onclick="Kick()">Kick</button>
+                            <button class="btn btn-stamina-driven-attacks" onclick="Attack()">Weapon</button>
+                        </div>
+                        <div class="mana-attack">
+                            <button class="btn btn-mana-driven-attacks" onclick="FireMagic()">Flame</button>
+                            <button class="btn btn-mana-driven-attacks" onclick="WindMagic()">Wind</button>
+                            <button class="btn btn-mana-driven-attacks" onclick="IceMagic()">Ice</button>
+                        </div>
+                        <div>
+                            <button class="btn-potions btn-health-potion" onclick="HealthPotion()">Health Potion</button>
+                            <button class="btn-potions btn-stamina-potion" onclick="StaminaPotion()">Stamina Potion</button>
+                            <button class="btn-potions btn-mana-potion" onclick="ManaPotion()">Mana Potion</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Battle Console -->
+                <div class="battle-console-box-wrapper">
+                    <div class="battle-console-title"><h2>Battle Details Here!</h2></div>
+                    <div class="battle-console-box">
+                        <div id="battle-placeholder">
+                            <p>Please use the buttons to choose your plan of action.</p>
+                            <!-- PLACEHOLDER: THIS IS WHERE DETAILS OF THE BATTLE HAPPENS. -->
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </section>
+        <!-- End battle menu -->
+        <!-- This is the inventory -->
+        <section>
+            <div class="wrapper-inventory-column inventory-wrapper">
+                <div class="inventory-border-all"><h2>Inventory:</h2></div>
+                <div class="wrapper-inventory-row inventory-border-all">
+                    <!-- Left inventory -->
+                    <div class="wrapper-inventory-column inventory-left">
+                        <div class="inventory-border-all"><h3>Equipment:</h3></div>
+                        <div class="wrapper-inventory-column push-bottom">
+                            <div class="push-bottom">
+                                <div class="wrapper-inventory-row push-bottom">
+                                    <!-- Left-side Left -->
+                                    <ul class="inventory-left inventory-border-all">
+                                        <li>Head: <span id="playerInfo.head">0</span></li>
+                                        <li>Armor: <span id="playerInfo.armor">0</span></li>
+                                        <li>Hands: <span id="playerInfo.hands">0</span></li>
+                                        <li>Waist: <span id="playerInfo.waist">0</span></li>
+                                        <li>Legs: <span id="playerInfo.legs">0</span></li>
+                                        <li>Feet: <span id="playerInfo.feet">0</span></li>
+                                    </ul>
+                                    <!-- Right-side Left -->
+                                    <ul class="inventory-left inventory-border-all">
+                                        <li>Left Hand: <span id="playerInfo.leftHand">0</span></li>
+                                        <li>Right Hand: <span id="playerInfo.rightHand">0</span></li>
+                                        <li>Number of Arrows: x <span id="playerStats.numArrows">0</span></li>
+                                        <br>
+                                        <li>Upper Clothes: <span id="playerInfo.upperClothes">0</span></li>
+                                        <li>Lower Clothes: <span id="playerInfo.lowerClothes">0</span></li>
+                                        <li>Leg Coverings: <span id="playerInfo.legCoverings">0</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right inventory -->
+                    <div class="wrapper-inventory-column inventory-right">
+                        <div class="inventory-border-all"><h3>Items & Gold:</h3></div>
+                        <div class="inventory-right">
+                            <div class="wrapper-inventory-column">
+                                <!-- Gold -->
+                                <ul class="inventory-border-all">
+                                    <li>Gold: $<span id="playerStats.gold">0</span></li>
+                                </ul>
+                                <!-- Potions -->
+                                <ul class="inventory-border-all">
+                                    <li>Health Potion: <span id="playerStats.numHealthPotions">0</span> || Magic Potion: <span id="playerStats.numManaPotions">0</span> || Stamina Potion: <span id="playerStats.numStaminaPotions">0</span> || Boost Potion: <span id="Potions.BlockUpPotionName">0</span></li>
+                                </ul>
+                                <!-- Material -->
+                                <ul  class="inventory-border-all">
+                                    <li>Beast Drops:</li>
+                                    <li>Raw Hide: <span id="materialStats.rawhide">0</span> || Silk: <span id="materialStats.silk">0</span> || Beast Cores: <span id="materialStats.core">0</span></li>
+                                    <li>Gathering Materials:</li>
+                                    <li>Ore: <span id="materialStats.ore">0</span> || Stone: <span id="materialStats.stone">0</span> || Wood: <span id="materialStats.wood">0</span> || Sand: <span id="materialStats.sand">0</span> || Glass: <span id="materialStats.glass">0</span></li>
+                                    <li>Production Items:</li>
+                                    <li>Metal: <span id="materialStats.metal">0</span> || Leather: <span id='materialStats.leather'>0</span> || Silk Cloth: <span id="materialStats.silkCloth">0</span> || Magi-Cores: <span id="materialStats.magiCore">0</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End inventory -->
+        <!-- Shop -->
+        <section class="shop-wrapper shop-border">
+            <h2 class="shop-border shop-background">Welcome to <span id="playerInfo.shop">FyuckU</span>'s shop!</h2>
+            <div class="shop-border-smaller">
+                <div class="shop-gold shop-border-smaller shop-background">
+                    <h3>Gold: $<span id="shopStats.shopGold">0</span></h3>
+                </div>
+                <div class="shop-console-title shop-border-smaller shop-background"><h3>Shopkeeper <span id="shopKeeper.name">None</span></h3></div>
+                <div class="shop-console-box shop-border-smaller shop-console-box-background">
+                    <div id="shop-placeholder">
+                        <p>Feel free to peruse our inventory!</p>
+                        <!-- PLACEHOLDER: THIS IS WHERE DETAILS OF THE SHOP HAPPENS. -->
+                    </div>
+                </div>
+            </div>
+            <ul class="flex-row shop-background">
+                <ul class="warrior-shop shop-border-smaller">
+                    <h3 class="shop-border-smaller">Warrior Shop:</h3>
+                    <li><span id="shopInfo.name">None</span>: Amount Left <span id="shopStats.numLeft">0</span> Cost/Sale: $<span id="shopStats.cost">0</span>/$<span id="shopStats.saleValue">0</span> <button class="btn-buy" onclick="buy()">Buy</button> / <button class="btn-sale" onclick="sale()">Sale</button></li>
+                    <li><span id="shopInfo.name1">None</span>: Amount Left <span id="shopStats.numLeft1">0</span> Cost/Sale: $<span id="shopStats.cost1">0</span>/$<span id="shopStats.saleValue1">0</span> <button class="btn-buy" onclick="buy1()">Buy</button> / <button class="btn-sale" onclick="sale1()">Sale</button></li>
+                    <li><span id="shopInfo.name2">None</span>: Amount Left <span id="shopStats.numLeft2">0</span> Cost/Sale: $<span id="shopStats.cost2">0</span>/$<span id="shopStats.saleValue2">0</span> <button class="btn-buy" onclick="buy2()">Buy</button> / <button class="btn-sale" onclick="sale2()">Sale</button></li>
+                    <li><span id="shopInfo.name3">None</span>: Amount Left <span id="shopStats.numLeft3">0</span> Cost/Sale: $<span id="shopStats.cost3">0</span>/$<span id="shopStats.saleValue3">0</span> <button class="btn-buy" onclick="buy3()">Buy</button> / <button class="btn-sale" onclick="sale3()">Sale</button></li>
+                    <li><span id="shopInfo.name4">None</span>: Amount Left <span id="shopStats.numLeft4">0</span> Cost/Sale: $<span id="shopStats.cost4">0</span>/$<span id="shopStats.saleValue4">0</span> <button class="btn-buy" onclick="buy4()">Buy</button> / <button class="btn-sale" onclick="sale4()">Sale</button></li>
+                    <li><span id="shopInfo.name5">None</span>: Amount Left <span id="shopStats.numLeft5">0</span> Cost/Sale: $<span id="shopStats.cost5">0</span>/$<span id="shopStats.saleValue5">0</span> <button class="btn-buy" onclick="buy5()">Buy</button> / <button class="btn-sale" onclick="sale5()">Sale</button></li>
+                    <li><span id="shopInfo.name6">None</span>: Amount Left <span id="shopStats.numLeft6">0</span> Cost/Sale: $<span id="shopStats.cost6">0</span>/$<span id="shopStats.saleValue6">0</span> <button class="btn-buy" onclick="buy6()">Buy</button> / <button class="btn-sale" onclick="sale6()">Sale</button></li>
+                    <li><span id="shopInfo.name7">None</span>: Amount Left <span id="shopStats.numLeft7">0</span> Cost/Sale: $<span id="shopStats.cost7">0</span>/$<span id="shopStats.saleValue7">0</span> <button class="btn-buy" onclick="buy7()">Buy</button> / <button class="btn-sale" onclick="sale7()">Sale</button></li>
+                </ul>
+                <ul class="archer-shop shop-border-smaller">
+                    <h3 class="shop-border-smaller">Archer Shop:</h3>
+                    <li><span id="shopInfo.name10">None</span>: Amount Left <span id="shopStats.numLeft10">0</span>/<span id="shopStats.amountOf10">0</span> Cost/Sale: $<span id="shopStats.cost10">0</span>/$<span id="shopStats.saleValue10">0</span> <button class="btn-buy" onclick="buy10()">Buy</button> / <button class="btn-sale" onclick="sale10()">Sale</button></li>
+                    <li><span id="shopInfo.name11">None</span>: Amount Left <span id="shopStats.numLeft11">0</span>/<span id="shopStats.amountOf11">0</span> Cost/Sale: $<span id="shopStats.cost11">0</span>/$<span id="shopStats.saleValue11">0</span> <button class="btn-buy" onclick="buy11()">Buy</button> / <button class="btn-sale" onclick="sale11()">Sale</button></li>
+                    <li><span id="shopInfo.name12">None</span>: Amount Left <span id="shopStats.numLeft12">0</span>/<span id="shopStats.amountOf12">0</span> Cost/Sale: $<span id="shopStats.cost12">0</span>/$<span id="shopStats.saleValue12">0</span> <button class="btn-buy" onclick="buy12()">Buy</button> / <button class="btn-sale" onclick="sale12()">Sale</button></li>
+                    <li><span id="shopInfo.name13">None</span>: Amount Left <span id="shopStats.numLeft13">0</span>/<span id="shopStats.amountOf13">0</span> Cost/Sale: $<span id="shopStats.cost13">0</span>/$<span id="shopStats.saleValue13">0</span> <button class="btn-buy" onclick="buy13()">Buy</button> / <button class="btn-sale" onclick="sale13()">Sale</button></li>
+                    <li><span id="shopInfo.name14">None</span>: Amount Left <span id="shopStats.numLeft14">0</span>/<span id="shopStats.amountOf14">0</span> Cost/Sale: $<span id="shopStats.cost14">0</span>/$<span id="shopStats.saleValue14">0</span> <button class="btn-buy" onclick="buy14()">Buy</button> / <button class="btn-sale" onclick="sale14()">Sale</button></li>
+                    <li><span id="shopInfo.name15">None</span>: Amount Left <span id="shopStats.numLeft15">0</span>/<span id="shopStats.amountOf15">0</span> Cost/Sale: $<span id="shopStats.cost15">0</span>/$<span id="shopStats.saleValue15">0</span> <button class="btn-buy" onclick="buy15()">Buy</button> / <button class="btn-sale" onclick="sale15()">Sale</button></li>
+                    <li><span id="shopInfo.name16">None</span>: Amount Left <span id="shopStats.numLeft16">0</span>/<span id="shopStats.amountOf16">0</span> Cost/Sale: $<span id="shopStats.cost16">0</span>/$<span id="shopStats.saleValue16">0</span> <button class="btn-buy" onclick="buy16()">Buy</button> / <button class="btn-sale" onclick="sale16()">Sale</button></li>
+                    <li><span id="shopInfo.name17">None</span>: Amount Left <span id="shopStats.numLeft17">0</span>/<span id="shopStats.amountOf17">0</span> Cost/Sale: $<span id="shopStats.cost17">0</span>/$<span id="shopStats.saleValue17">0</span> <button class="btn-buy" onclick="buy17()">Buy</button> / <button class="btn-sale" onclick="sale17()">Sale</button></li>
+                </ul>
+                <ul class="mage-shop shop-border-smaller">
+                    <h3 class="shop-border-smaller">Mage Shop:</h3>
+                    <li><span id="shopInfo.name18">None</span>: Amount Left <span id="shopStats.numLeft18">0</span> Cost/Sale: $<span id="shopStats.cost18">0</span>/$<span id="shopStats.saleValue18">0</span> <button class="btn-buy" onclick="buy18()">Buy</button> / <button class="btn-sale" onclick="sale18()">Sale</button></li>
+                    <li><span id="shopInfo.name19">None</span>: Amount Left <span id="shopStats.numLeft19">0</span> Cost/Sale: $<span id="shopStats.cost19">0</span>/$<span id="shopStats.saleValue19">0</span> <button class="btn-buy" onclick="buy19()">Buy</button> / <button class="btn-sale" onclick="sale19()">Sale</button></li>
+                    <li><span id="shopInfo.name20">None</span>: Amount Left <span id="shopStats.numLeft20">0</span> Cost/Sale: $<span id="shopStats.cost20">0</span>/$<span id="shopStats.saleValue20">0</span> <button class="btn-buy" onclick="buy20()">Buy</button> / <button class="btn-sale" onclick="sale20()">Sale</button></li>
+                    <li><span id="shopInfo.name21">None</span>: Amount Left <span id="shopStats.numLeft21">0</span> Cost/Sale: $<span id="shopStats.cost21">0</span>/$<span id="shopStats.saleValue21">0</span> <button class="btn-buy" onclick="buy21()">Buy</button> / <button class="btn-sale" onclick="sale21()">Sale</button></li>
+                    <li><span id="shopInfo.name22">None</span>: Amount Left <span id="shopStats.numLeft22">0</span> Cost/Sale: $<span id="shopStats.cost22">0</span>/$<span id="shopStats.saleValue22">0</span> <button class="btn-buy" onclick="buy22()">Buy</button> / <button class="btn-sale" onclick="sale22()">Sale</button></li>
+                    <li><span id="shopInfo.name23">None</span>: Amount Left <span id="shopStats.numLeft23">0</span> Cost/Sale: $<span id="shopStats.cost23">0</span>/$<span id="shopStats.saleValue23">0</span> <button class="btn-buy" onclick="buy23()">Buy</button> / <button class="btn-sale" onclick="sale23()">Sale</button></li>
+                    <li><span id="shopInfo.name24">None</span>: Amount Left <span id="shopStats.numLeft24">0</span> Cost/Sale: $<span id="shopStats.cost24">0</span>/$<span id="shopStats.saleValue24">0</span> <button class="btn-buy" onclick="buy24()">Buy</button> / <button class="btn-sale" onclick="sale24()">Sale</button></li>
+                    <li><span id="shopInfo.name25">None</span>: Amount Left <span id="shopStats.numLeft25">0</span> Cost/Sale: $<span id="shopStats.cost25">0</span>/$<span id="shopStats.saleValue25">0</span> <button class="btn-buy" onclick="buy25()">Buy</button> / <button class="btn-sale" onclick="sale25()">Sale</button></li>
+                    <li><span id="shopInfo.name26">None</span>: Amount Left <span id="shopStats.numLeft26">0</span> Cost/Sale: $<span id="shopStats.cost26">0</span>/$<span id="shopStats.saleValue26">0</span> <button class="btn-buy" onclick="buy26()">Buy</button> / <button class="btn-sale" onclick="sale26()">Sale</button></li>
+                </ul>
+                <ul class="misc-shop shop-border-smaller">
+                    <h3 class="shop-border-smaller">Miscellaneous Items:</h3>
+                    <li><span id="shopInfo.name8">None</span>: Amount Left <span id="shopStats.numLeft8">0</span> Cost/Sale: $<span id="shopStats.cost8">0</span>/$<span id="shopStats.saleValue8">0</span> <button class="btn-buy" onclick="buy8()">Buy</button> / <button class="btn-sale" onclick="sale8()">Sale</button></li>
+                    <li><span id="shopInfo.name9">None</span>: Amount Left <span id="shopStats.numLeft9">0</span> Cost/Sale: $<span id="shopStats.cost9">0</span>/$<span id="shopStats.saleValue9">0</span> <button class="btn-buy" onclick="buy9()">Buy</button> / <button class="btn-sale" onclick="sale9()">Sale</button></li>
+                    <h3 class="shop-border-smaller">Potions:</h3>
+                    <li><span id="shopInfo.name27">Health Potion</span>: Amount Left <span id="shopStats.numLeft27">0</span> Cost/Sale: $<span id="shopStats.cost27">0</span>/$<span id="shopStats.saleValue27">0</span> <button class="btn-buy" onclick="buy27()">Buy</button> / <button class="btn-sale" onclick="sale27()">Sale</button></li>
+                    <li><span id="shopInfo.name28">Stamina Potion</span>: Amount Left <span id="shopStats.numLeft28">0</span> Cost/Sale: $<span id="shopStats.cost28">0</span>/$<span id="shopStats.saleValue28">0</span> <button class="btn-buy" onclick="buy28()">Buy</button> / <button class="btn-sale" onclick="sale28()">Sale</button></li>
+                    <li><span id="shopInfo.name29">Mana Potion</span>: Amount Left <span id="shopStats.numLeft29">0</span> Cost/Sale: $<span id="shopStats.cost29">0</span>/$<span id="shopStats.saleValue29">0</span> <button class="btn-buy" onclick="buy29()">Buy</button> / <button class="btn-sale" onclick="sale29()">Sale</button></li>
+                </ul>
+            </ul>
+        </section>
+        <!-- End Shop -->
+        <!-- Gathering -->
+        <section class="gather-wrapper gather-border">
+            <h2 class="gather-border gather-background">Gathering Menu</h2>
+            <ul class="flex-column gather-background">
+                <h3 class="gather-border">Gathering Resources:</h3>
+                <li><button class="btn-stone" onclick="stone()">Stone</button> Mined: <span id="materialStats.stone1">0</span></li>
+                <div class="statusContainer1">
+                    <div class="stoneHealthBarBlue"></div>
+                    <div class="stoneHealthBar"></div>
+                    <div id="stoneHealth"></div>
+                </div>
+                <li><button class="btn-wood" onclick="wood()">Wood</button> Chopped: <span id="materialStats.wood1">0</span></li>
+                <div class="statusContainer1">
+                    <div class="woodHealthBarBlue"></div>
+                    <div class="woodHealthBar"></div>
+                    <div id="woodHealth"></div>
+                </div>
+                <li><button class="btn-sand" onclick="sand()">Sand</button> Scooped: <span id="materialStats.sand1">0</span></li>
+                <div class="statusContainer1">
+                    <div class="sandHealthBarBlue"></div>
+                    <div class="sandHealthBar"></div>
+                    <div id="sandHealth"></div>
+                </div>
+            </ul>
+        </section>
+        <!-- End Gathering -->
+        <!-- Rebuilding -->
+        <section class="rebuild-wrapper rebuild-border">
+            <h2 class="rebuild-border rebuild-background">Rebuilding Menu</h2>
+            <ul class="flex-column rebuild-background">
+                <div class="flex-row">
+                    <div class="rebuild-wrapper-console rebuild-border">
+                        <div class="rebuild-console-box">
+                            <div id="rebuild-placeholder">
+                                <p>Please click the buttons to start helping rebuild the village.</p>
+                                <!-- PLACEHOLDER: THIS IS WHERE DETAILS OF THE REBUILDING HAPPENS. -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rebuild-wrapper-house rebuild-border">
+                        <h3 class="rebuild-border">Residences Needing Rebuilt:</h3>
+                        <li><span id="janceInfo.name">N/A</span>: Completion Rate <span id="janceStats.min">0</span>/<span id="janceStats.max">0</span> <button class="btn-stone" onclick="janceStone()">Stone</button> <button class="btn-wood" onclick="janceWood()">Wood</button></li>
+                        <li><span id="renoInfo.name">N/A</span>: Completion Rate <span id="renoStats.min">0</span>/<span id="renoStats.max">0</span> <button class="btn-stone" onclick="renoStone()">Stone</button> <button class="btn-wood" onclick="renoWood()">Wood</button></li>
+                        <li><span id="rajInfo.name">N/A</span>: Completion Rate <span id="rajStats.min">0</span>/<span id="rajStats.max">0</span> <button class="btn-stone" onclick="rajStone()">Stone</button> <button class="btn-wood" onclick="rajWood()">Wood</button></li>
+                        <li><span id="greyInfo.name"></span>: Completion Rate <span id="greyStats.min">0</span>/<span id="greyStats.max">0</span> <button class="btn-stone" onclick="greyStone()">Stone</button> <button class="btn-wood" onclick="greyWood()">Wood</button></li>
+                        <li><span id="thaneInfo.name">N/A</span>: Completion Rate <span id="thaneStats.min">0</span>/<span id="thaneStats.max">0</span> <button class="btn-stone" onclick="thaneStone()">Stone</button> <button class="btn-wood" onclick="thaneWood()">Wood</button></li>
+                        <li><span id="hildtInfo.name">N/A</span>: Completion Rate <span id="hildtStats.min">0</span>/<span id="hildtStats.max">0</span> <button class="btn-stone" onclick="hildtStone()">Stone</button> <button class="btn-wood" onclick="hildtWood()">Wood</button></li>
+                    </div>
+                    <div class="rebuild-wrapper-house rebuild-border">
+                        <h3 class="rebuild-border">Businesses Needing Rebuilt:</h3>
+                        <li class="weaponsmith-building-visible"><span id="weaponSmithyInfo.name">N/A</span>: Completion Rate <span id="weaponSmithyStats.min">0</span>/<span id="weaponSmithyStats.max">0</span> <button class="btn-stone" onclick="weaponSmithyStone()">Stone</button> <button class="btn-wood" onclick="weaponSmithyWood()">Wood</button></li>
+                        <li class="armorsmith-building-visible"><span id="armorSmithyInfo.name">N/A</span>: Completion Rate <span id="armorSmithyStats.min">0</span>/<span id="armorSmithyStats.max">0</span> <button class="btn-stone" onclick="armorSmithyStone()">Stone</button> <button class="btn-wood" onclick="armorSmithyWood()">Wood</button></li>
+                        <li class="apothecary-building-visible"><span id="apothecaryInfo.name">N/A</span>: Completion Rate <span id="apothecaryStats.min">0</span>/<span id="apothecaryStats.max">0</span> <button class="btn-stone" onclick="apothecaryStone()">Stone</button> <button class="btn-wood" onclick="apothecaryWood()">Wood</button></li>
+                    </div>
+                </div>
+                
+            </ul>
+        </section>
+        <!-- End Rebuilding -->
+        <!-- Endora Hidden Menu -->
+        <section class="endora-secret-wrapper endora-secret-border">
+            <h2 class="endora-secret-border endora-secret-background">Welcome to the Production Area</h2>
+            <ul class="flex-column endora-secret-background">
+                <div class="flex-row">
+                    <div class="endora-secret-wrapper-console endora-secret-border">
+                        <div class="endora-secret-console-box">
+                            <div id="endora-secret-placeholder">
+                                <p>Please click the buttons to start turning base material into usable components.</p>
+                                <!-- PLACEHOLDER: THIS IS WHERE DETAILS OF THE FORGING HAPPENS. -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="flex-row">
+                        <div class="smithy-wrapper endora-secret-border forge-visible">
+                            <h3 class="endora-secret-border">
+                                Welcome to the Forge! </br>
+                                - For every 1 forged ingot, 3 ore is consumed. -
+                            </h3>
+                            <li><span id="materialName.metal">N/A</span>: Forged: <span id="materialStats.forgedMetal">0</span> <button class="btn-metal" onclick="Smelt()">Smelt</button></li>
+                            <li><span id="materialName.magiCore">N/A</span>: Forged: <span id="materialStats.condensedMagiCore">0</span> <button class="btn-metal" onclick="Condense()">Condense</button></li>
+                        </div>
+                        <div class="tanner-wrapper endora-secret-border tanner-visible">
+                            <h3 class="endora-secret-border">
+                                Welcome to the Tannery! </br>
+                                - For every 1 tanned leather, 3 hide is consumed. -
+                            </h3>
+                            <li><span id="materialName.leather">N/A</span>: Tanned: <span id="materialStats.tannedLeather">0</span> <button class="btn-leather" onclick="Tan()">Tan</button></li>
+                            <li><span id="materialName.silkCloth">N/A</span>: Tanned: <span id="materialStats.etchedSilkCloth">0</span> <button class="btn-leather" onclick="Spindle()">Spin</button></li>
+                        </div>
+                        <div class="apothecary-wrapper endora-secret-border apothecary-visible">
+                            <h3 class="endora-secret-border">
+                                Welcome to the Apothecary! </br>
+                                - I haven't worked this out yet. -
+                            </h3>
+                            <li><span id="materialName.leather">N/A</span>: Concocted: <span id="materialStats.leather">0</span> <button class="btn-potion" onclick="Brew()">Brew</button></li>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </section>
+        <!-- End Endora Hidden Menu -->
+        <!-- Experience bar -->
+        <section>
+            <ul class="level-wrapper">
+                <li>Level:
+                    <span id="playerStats.level">None</span>
+                </li>
+            </ul>
+            <ul class="experience-wrapper">
+                <li>Experience:
+                    <div class="experience-bar">
+                        <div class="experienceBar"></div>
+                        <div id="experience"></div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <!-- End experience bar -->
+         <!-- End console/Game box -->
+    </body>
+    <script src="js/jquery.js"></script>
+    <script src="js/numberconversion.js"></script>
+    <script src="js/textconversion.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/updateplayer.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/updateenemy.js"></script>
+    <script src="js/potions.js"></script>
+    <script src="js/battle.js"></script>
+    <script src="js/material.js"></script>
+    <script src="js/building.js"></script>
+    <script src="js/levelup.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/endorahiddenmenu.js"></script>
+    <script src="js/updateshop.js"></script>
+    <script src="js/updatebuildings.js"></script>
+    <script src="js/open_and_close.js"></script>
+    <script src="js/equipment.js"></script>
+    <script src="js/randomnumber.js"></script>
+</html>

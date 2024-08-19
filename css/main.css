@@ -1,0 +1,328 @@
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+/* Created baseline colors for the site */
+:root {
+    --site-color-01: #000;
+    --site-color-02: #8C1C0F;
+    --site-color-03: #1e1e1e;
+    --site-color-04: #1a253a;
+    --site-color-05: #807D7D;
+    --site-color-06: #fff;
+}
+/* Setting base styling for the document */
+html {
+    font-size: 62.5%;
+}
+body {
+    width: 100%;
+    border: 5px ridge var(--site-color-02);
+    border-radius: 15px;
+    background-color: var(--site-color-01);
+}
+h1 {
+    font-size: 2.4rem;
+    line-height: 1.5;
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+    margin: auto 0;
+    text-shadow: 4px 4px var(--site-color-01);
+}
+h2 {
+    font-size: 1.9rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+p {
+    font-size: 1.4rem;
+    line-height: 1.75;
+    color: #fff;
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+}
+li {
+    font-size: 1.4rem;
+    text-align: center;
+    color: #fff;
+    margin: 5.5px auto;
+}
+span {
+    background: linear-gradient(10deg, #000, red);
+    padding: 1px 3px;
+    border: 0.2px ridge white;
+    margin-left: 5px;
+}
+/* End base setting */
+/* Header */
+.header-main {
+    width: 100%;
+    height: 65px;
+    background-color: var(--site-color-02);
+    border: 3px ridge var(--site-color-05);
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 1;
+}
+.header-main-welcome p {
+    margin-left: 50%;
+}
+/* End Header */
+/* Reusable Row and Column wrappers */
+.wrapper-main-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.wrapper-main-column {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+/* End reusable Row and Column wrappers */
+/* This is a reusable "make sure that content pushes to the bottom of the div" code */
+.push-bottom {
+    height: 100%;
+}
+/* End push to bottom */
+/* Buttons */
+.btn-wrapper {
+    width: calc(100% - 2.5px);
+    display: flex;
+    flex-direction: row;
+    margin: 2.5px 2.5px;
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-shadow: 2px 4px var(--site-color-01);
+}
+.btn {
+    width: 80px;
+    height: 30px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #111;
+    cursor: pointer;
+}
+.btn p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn:hover {
+    opacity: 0.5;
+}
+.btn-toggle-stats {
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(139, 66, 66, 1));
+}
+.btn-toggle-inventory {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), rgb(250, 4, 4, 1));
+}
+.btn-toggle-shop {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), rgb(246, 250, 4));
+    display: none;
+}
+.btn-toggle-gather {
+    background: linear-gradient(10deg, rgb(9, 54, 0), rgb(36, 211, 1));
+    display: none;
+}
+.btn-toggle-rebuild {
+    background: linear-gradient(10deg, rgb(225, 2, 255), rgb(110, 0, 153));
+    display: none;
+}
+.btn-toggle-production {
+    background: linear-gradient(10deg, rgb(255, 2, 2), rgb(153, 0, 0));
+    display: none;
+}
+.btn-stamina-driven-attacks {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), yellow);
+    text-shadow: 2px 2px var(--site-color-02);
+}
+.btn-mana-driven-attacks {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), blue);
+    color: var(--site-color-06);
+    text-shadow: 2px 2px var(--site-color-02);
+}
+.btn-potions {
+    width: 70px;
+    height: auto;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #111;
+    cursor: pointer;
+}
+.btn-health-potion {
+    background: linear-gradient(10deg, rgba(2, 0, 2, 0), red);
+    text-shadow: 2px 2px var(--site-color-02);
+}
+.btn-stamina-potion {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), yellow);
+    text-shadow: 2px 2px var(--site-color-02);
+}
+.btn-mana-potion {
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), blue);
+    text-shadow: 2px 2px var(--site-color-02);
+}
+.btn-buy {
+    width: 35px;
+    height: auto;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #111;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(255, 2, 2));
+    cursor: pointer;
+}
+.btn-buy p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-buy:hover {
+    opacity: 0.5;
+}
+.btn-sale {
+    width: 35px;
+    height: auto;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #111;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(2, 6, 255));
+    cursor: pointer;
+}
+.btn-sale p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-sale:hover {
+    opacity: 0.5;
+}
+.btn-stone {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), brown);
+    cursor: pointer;
+}
+.btn-stone p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-stone:hover {
+    opacity: 0.5;
+}
+.btn-wood {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(19, 90, 1));
+    cursor: pointer;
+}
+.btn-wood p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-wood:hover {
+    opacity: 0.5;
+}
+.btn-sand {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(255, 174, 0));
+    cursor: pointer;
+}
+.btn-sand p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-sand:hover {
+    opacity: 0.5;
+}
+.btn-metal {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(255, 0, 0, 0.418));
+    cursor: pointer;
+}
+.btn-metal p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-metal:hover {
+    opacity: 0.5;
+}
+.btn-leather {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(255, 166, 0, 0.5));
+    cursor: pointer;
+}
+.btn-leather p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-leather:hover {
+    opacity: 0.5;
+}
+.btn-potion {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(25, 0, 255, 0.616));
+    cursor: pointer;
+}
+.btn-potion p {
+    text-align: center;
+    line-height: 25px;
+}
+.btn-potion:hover {
+    opacity: 0.5;
+}
+/* End of Buttons */
+/* Flex Directions */
+.flex-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.flex-column {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+/* End of Flex Directions */

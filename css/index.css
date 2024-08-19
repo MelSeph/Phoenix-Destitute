@@ -1,0 +1,628 @@
+
+/* Container for the console and Attribute boxes */
+main {
+    width: calc(100% - 4.5px);
+    height: 25%;
+    margin: 2.5px 2.5px;
+    display: flex;
+    z-index: 2;
+}
+/* Console box */
+.console-box-wrapper {
+    /* Actual Width */
+    width: 100%;
+    /* Test Width - Gender Benefits */
+    /* width: 78.73%; */
+    /* Test Width - Class Benefits */
+    /* width: 78.73%; */
+    border: 5px ridge #615F5F;
+}
+.console-title {
+    width: 100%;
+    text-align: center;
+    border: 5px ridge #615F5F;
+    background: linear-gradient(-45deg, rgb(128, 128, 128, 0), rgb(128, 128, 128, 1));
+}
+.console-box {
+    display: block;
+    width: 100%;
+    /* Actual max and min height */
+    min-height: 214px;
+    max-height: 214px;
+    /* Test max and min height - Gender Benefits */
+    /* min-height: 285px;
+    max-height: 285px; */
+    /* Test max and min height - Class Benefits */
+    /* min-height: 462px;
+    max-height: 462px; */
+    overflow-y: auto;
+    border: 5px ridge #615F5F;
+    background: linear-gradient(-45deg, #000, #615F5F);
+}
+.console-box:hover {
+    opacity: 0.9;
+}
+.console-box h2 {
+    text-align: center;
+    border: 5px ridge #615F5F;
+}
+.console-box p {
+    text-align: center;
+    white-space: pre;
+}
+#placeholder {
+    width: 100%;
+}
+.user-input-box {
+    border: 4px ridge #615F5F;
+}
+.form {
+    width: 100%;
+    height: 18px;
+}
+.form:hover {
+    cursor: pointer;
+}
+#command_line {
+    width: 100%;
+    height: 18px;
+	text-align: center;
+    color: #000;
+    background-color: #fff;
+    font-size: 1.2rem;
+}
+#command_line:focus {
+    background-color: #000;
+    color: #fff;
+}
+/* End Console box */
+/* Attribute box */
+.wrapper-stats {
+    flex-direction: column;
+    display: none;
+    margin-left: 5px;
+}
+/* Gender attribute box */
+.wrapper-gender-context {
+    flex-direction: column;
+    display: none;
+}
+/* End Gender attribute box  */
+/* Class attribute box */
+.wrapper-class-context {
+    flex-direction: column;
+    display: none;
+}
+/* End Class attribute box  */
+.stats-box {
+    width: 100%;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(139, 66, 66, 1));
+	border: 5px ridge #613000;
+}
+.stats-box h2 {
+	text-align: center;
+    border: 5px ridge #613000;
+}
+/* End Attributes */
+/* Inventory box */
+section {
+    flex-direction: row;
+    margin-top: 2.5px;
+    margin-bottom: 5px;
+}
+.wrapper-inventory-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.wrapper-inventory-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.inventory-border-all {
+    border: 5px ridge yellow;
+}
+.inventory-wrapper {
+    display: none;
+    margin-left: 3px;
+    width: calc(100% - 7px);
+    background: linear-gradient(10deg, rgb(131, 1, 131, 0), rgb(250, 4, 4, 1));
+}
+.inventory-wrapper h2 {
+    text-align: center;
+}
+.inventory-wrapper h3 {
+    text-align: center;
+}
+.inventory-left,
+.inventory-right {
+    width:100%;
+}
+.inventory-left p,
+.inventory-right p {
+    text-align: justify;
+    margin: 10px 10px;
+}
+/* End Inventory */
+/* Battle */
+.battle-wrapper {
+    display: none;
+    margin-left: 3px;
+    width: calc(100% - 7px);
+    text-align: center;
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgb(53, 53, 53));
+}
+.battle-wrapper ul li {
+    margin: 0px 0px;
+}
+.battle-border {
+    border: 5px ridge whitesmoke;
+}
+.battle-wrapper1 {
+    display: flex;
+    flex-direction: row;
+}
+.status-wrapper {
+    width: 35%;
+}
+.statusContainer {
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 100%;
+	border: solid 2px gold;
+    background: radial-gradient(circle at 100px 100px, black, grey);
+	height: 80px;
+	width: 80px;
+    margin: 5px 5px;
+}
+.healthBar {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(255, 0, 0, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.healthBarBlue {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(255, 0, 0), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.staminaBar {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(238, 255, 0, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.staminaBarBlue {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(255, 238, 0), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.manaBar {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(4, 0, 255, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.manaBarBlue {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(0, 17, 255), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.healthBarE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(255, 0, 0, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.healthBarBlueE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(255, 0, 0), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.staminaBarE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(238, 255, 0, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.staminaBarBlueE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(255, 238, 0), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.manaBarE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgba(4, 0, 255, 0.664), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.manaBarBlueE {
+	border-radius: 100%;
+	background: radial-gradient(circle at 100px 100px, rgb(0, 17, 255), rgb(128, 128, 128));
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+#playerHealth {
+    margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+#playerStamina {
+	margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+#playerMana {
+	margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+#enemyHealth {
+	margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+#enemyStamina {
+	margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+#enemyMana {
+	margin-top: 20px;
+	position: relative;
+	bottom: 143px;
+	color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+.attack-menu {
+    width: 35%;
+}
+.stamina-attack {
+    display: none;
+}
+.mana-attack {
+    display: none;
+}
+.battle-console-box-wrapper {
+    width: 35%;
+    border: 5px ridge whitesmoke;
+}
+.battle-console-title {
+    width: 100%;
+    text-align: center;
+    border: 5px ridge whitesmoke;
+}
+.battle-console-box {
+    display: block;
+    width: 100%;
+    min-height: 230px;
+    max-height: 230px;
+    overflow-y: auto;
+    border: 5px ridge whitesmoke;
+}
+.battle-console-box:hover {
+    opacity: 0.9;
+}
+.battle-console-box h2 {
+    text-align: center;
+}
+.battle-console-box p {
+    text-align: center;
+    white-space: pre;
+}
+#battle-placeholder {
+    width: 100%;
+}
+/* End Battle */
+/* Level */
+.level-wrapper {
+    margin-left: 3px;
+    width: calc(100% - 7px);
+    border: 5px ridge purple;
+}
+/* End Level */
+/* Experience */
+.experience-wrapper {
+    margin-left: 3px;
+    width: calc(100% - 7px);
+    border: 5px ridge purple;
+}
+.experience-wrapper li {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+.experience-bar {
+    background: radial-gradient(circle at 100px 100px, darkgrey, rgba(169, 169, 169, 0.432));
+    width: calc(100% - 73px);
+    border: 2px ridge var(--site-color-03);
+    margin-left: 3px;
+    overflow: hidden;
+}
+.experienceBar {
+    position: relative;
+    background: radial-gradient(circle at 100px 100px, blue, grey);
+    height: 100%;
+}
+#experience {
+	background: radial-gradient(circle at 100px 100px, transparent, transparent);
+	position: relative;
+	color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    bottom: 14px;
+}
+/* End Experience */
+/* Shop */
+.shop-wrapper {
+    display: none;
+    margin-left: 3px;
+    text-align: center;
+    width: calc(100% - 7px);
+}
+.shop-border {
+    border: 5px ridge #ffd900b4;
+}
+.shop-border-smaller {
+    border: 2px ridge #ffd900b4;
+}
+.shop-background {
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(251, 255, 0, 0.568));
+}
+.shop-console-box {
+    display: block;
+    width: 100%;
+    min-height: 230px;
+    max-height: 230px;
+    overflow-y: auto;
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.699));
+}
+.shop-console-box-background {
+    background: linear-gradient(10deg, rgba(255, 255, 255, 0.137), rgb(3, 3, 3));
+}
+.shop-console-box:hover {
+    opacity: 0.9;
+}
+.shop-console-box h2 {
+    text-align: center;
+}
+.shop-console-box p {
+    text-align: center;
+    white-space: pre;
+}
+#shop-placeholder {
+    width: 100%;
+}
+.warrior-shop {
+    display: none;
+    width: 50%;
+}
+.archer-shop {
+    display: none;
+    width: 50%;
+}
+.mage-shop {
+    display: none;
+    width: 50%;
+}
+.misc-shop {
+    display: none;
+    width: 50%;
+}
+/* End Shop */
+/* Gathering */
+.gather-wrapper {
+    display: none;
+    margin-left: 3px;
+    text-align: center;
+    width: calc(100% - 7px);
+}
+.gather-border {
+    border: 5px ridge #035a00de;
+}
+.gather-background {
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(58, 158, 0, 0.74));
+}
+.statusContainer1 {
+    width: 100%;
+    position: relative;
+}
+.stoneHealthBar {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgb(255, 174, 0));
+	position: relative;
+    bottom: 22px;
+}
+.stoneHealthBarBlue {
+    width: 100%;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: grey;
+	position: relative;
+}
+#stoneHealth {
+	position: relative;
+	color: black;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 1.2rem;
+    bottom: 42px;
+}
+.woodHealthBar {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), brown);
+	position: relative;
+    bottom: 22px;
+}
+.woodHealthBarBlue {
+    width: 100%;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: grey;
+	position: relative;
+}
+#woodHealth {
+	position: relative;
+	color: black;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 1.2rem;
+    bottom: 42px;
+}
+.sandHealthBar {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(208, 231, 3, 0.938));
+	position: relative;
+    bottom: 22px;
+}
+.sandHealthBarBlue {
+    width: 100%;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: grey;
+	position: relative;
+}
+#sandHealth {
+	position: relative;
+	color: black;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 1.2rem;
+    bottom: 42px;
+}
+/* End Gathering */
+/* Rebuilding */
+.rebuild-wrapper {
+    display: none;
+    margin-left: 3px;
+    text-align: center;
+    width: calc(100% - 7px);
+}
+.rebuild-border {
+    border: 5px ridge #41005ade;
+}
+.rebuild-background {
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(115, 0, 182, 0.74));
+}
+.rebuild-wrapper-console {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.rebuild-console-box {
+    display: block;
+    width: 100%;
+    min-height: 230px;
+    max-height: 230px;
+    overflow-y: auto;
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.699));
+}
+.rebuild-wrapper-house {
+    display: block;
+    text-align: center;
+    width: 50%;
+}
+.weaponsmith-building-visible {
+    display: none;
+}
+.armorsmith-building-visible {
+    display: none;
+}
+.apothecary-building-visible {
+    display: none;
+}
+/* End Rebuilding */
+/* Endora Hidden Menu */
+.endora-secret-wrapper {
+    display: none;
+    margin-left: 3px;
+    text-align: center;
+    width: calc(100% - 7px);
+}
+.endora-secret-border {
+    border: 5px ridge #d3f80369;
+}
+.endora-secret-background {
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(186, 253, 2, 0.425));
+}
+.endora-secret-wrapper-console {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.endora-secret-console-box {
+    display: block;
+    width: 100%;
+    min-height: 230px;
+    max-height: 230px;
+    overflow-y: auto;
+    background: linear-gradient(10deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.877));
+}
+.smithy-wrapper {
+    text-align: center;
+    width: 33.32%;
+}
+.tanner-wrapper {
+    text-align: center;
+    width: 33.32%;
+}
+.apothecary-wrapper {
+    text-align: center;
+    width: 33.32%;
+}
+.forge-visible {
+    display: none;
+}
+.tanner-visible {
+    display: none;
+}
+.apothecary-visible {
+    display: none;
+}
+/* End Endora Hidden Menu */

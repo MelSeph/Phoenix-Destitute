@@ -1,0 +1,314 @@
+-------------------------------------------------------------------------------------------
+                        Phoenix Destitute RPG Text Game
+                 Written, Coded, and Maintained by: Joseph Hogue
+                              Project Started in 2013
+-------------------------------------------------------------------------------------------
+___________________________________________________________________________________________
+
+-------------------------------------------------------------------------------------------
+                                        2017
+-------------------------------------------------------------------------------------------
+
+20/May/2017:
+Concept v. 0.0.1
+Rearranged some things, and updated others:
+1. Repositioned the character class function to just under the name function.
+2. Cleaned up a bit of the code, and was able to plug some content where I had to make 
+separate functions earlier.
+3. Have the code to enter the Battle Menu, but the battle cannot start.
+
+13/May/2017:
+Added several features to the game:
+1. Added code to strip the text from the command line each time the enter button is pressed.
+2. Added Normalize.css to bring congruency to the different browsers.
+3. Adjusted the scroll feature for the console window (need to make it reviewable).
+4. Constructed the ability to get to town without equipping any gear.
+
+Ideas for next update:
+1. Reposition the character class choice to before starting == true. Probably just after name.
+2. Construct the first battle menu.
+
+-------------------------------------------------------------------------------------------
+                                        2018
+-------------------------------------------------------------------------------------------
+
+24/Aug/2018:
+Finally have some semblance of a battle system going on.
+Need to find a way to parse the hero's HP and allow the battle menu to decrease and keep the new value from being hit. Enemy's health depletes due to being outside the functions and console. 
+Hero's HP will not, due to it always re-grabbing the static, set health outside battle. This will be a problem with the enemy HP, when I get to creating the enemies.
+
+31/Aug/2018:
+Updated to v. 0.0.2
+Added a few things and moved some things around:
+1. Added a Mage class to the Class membership.
+2. Completely rewrote the game code (took out most of the functions, since most of the code can be read from a While loop).
+3. Separated the code into finer .js files, easier to sort and keep track of.
+4. Battle system is working, moved what code could be set outside the main game code function to its own Battle.js file.
+5. Found a major error in the .css that made playing on many other screen sizes unplayable. Corrected it as best I could.
+6. There was an issue where the scroll-top function would stop scrolling to the bottom as new text was thrown into the console. 
+- Was able to play with the scroll-top function until I resolved the issue (added 99999999px to it).
+7. Created a level up system, as well as a way to track win and lose battle.
+
+Ideas for update:
+1. Make a place within the battle menu to house the amount of MP, Endurance, and Strength the hero has left.
+- Looking for if hero swings sword, - x amount of strength. Same idea for each Class.
+2. Need to spend time looking into making the level system comprehensive.
+
+22/Nov/2018:
+Finally got the level up system up and going. Will probably have to invest time in increasing the amount of exp needed to level up as you level.
+Got the Shop system started.
+
+-------------------------------------------------------------------------------------------
+                                        2019
+-------------------------------------------------------------------------------------------
+
+31/Jan/2019:
+Complete rewrite of code to start condensing the lines of code.
+Updated the CSS to make the different boxes more streamlined.
+Rewrote Hero & Enemy code to an Array format, which works as intended.
+- Shop system was up and going, but trying to follow same format as the Hero & Enemy code... seems to have me trapped at this time. 
+Cannot think of a way to call the separate items from the Array, and put them in the shop variable, so they can be read.
+As soon as I can find a solution to the shop issue, I will try continuing with the story.
+
+Ideas/Areas to Update:
+Need to get that shop up and running!
+
+3/March/2019:
+Updated to v. 0.0.3
+Another complete rewrite of many things.
+Created Objects for player (Hero), enemy, Shop, Armor, and Weapons.
+Everything seems to be working as intended.
+Wish I could find a way to shorten the code further, but already looks more sleek.
+
+Update! - Shop is up and running for all three class types. Seems like I have finally got the system to remove the old and attach the new. 
+
+Only issue is when buying arrows, I cannot find out how to remove the old value and retain only the new value... It stacks with the old value. I will get to that at some point. Just happy to see it working, for now.
+
+5/March/2019:
+Turned the potions into objects and updated the code in the main function to reflect that change.
+- Noticed that I need to make a change to where, when using a potion, it doesn't raise the battle health above the max health.
+
+Wrote a bit of code for the story, when you choose not to fight the first time. I plan to make this a very unpleasant thing to do.
+
+6/March/2019:
+Made the run option a lot more horrifying... not sure it is enough though. Want that shit daaaaarrkk...
+- Updated a marker that listens for good or bad choices, and now updates the part where you enter the world for the first time. Depends on whether you stay and fight or run away.
+
+26/April/2019:
+Updated the shop to properly update the html code as you play an Archer and a Mage.
+Added a bit more to the shop system... under-ware! Gave the Player a Sexiness tag that is updatable by what type of clothes / under-ware they choose to ware.
+My idea for this (currently) is to add a modifier for persuasion (even though there are no dialog options thus far).
+-Updated the level-up system to actually level as I would like... now I might make it a bit longer between levels... haven't decided on that yet. May work on that when I am pre-beta.
+
+Ideas/Areas to Update:
+Now that the first shop is nearing completion, I need to focus on expanding the story. I want to, at least, get one NPC to kick up some dialogue.
+
+30/June/2019:
+Updated to v. 0.0.4
+Updated the way the system looks at the numerology, changing anything over a Thousand to its proper symbol (letter modifier).
+Fixed some grammar errors Melissa (my wife) pointed out, while a character purchases an item from the shop.
+Expanded the story to take your first steps on the road to a new area. Named the starter area Engora. Still haven't added the NPC, and want to add a chance for battle along the way.
+
+Ideas/Areas to Update:
+Still need to create NPCs.
+Need to name the next city and the road leading to it. Need to add a chance for battle as you walk, and maybe a clock/time, month, year tracker of some type.
+Create and employ the Stamina and Magic bars and make them manageable.
+
+16/Aug/2019:
+Started working on converting all the major <if> statements to <switch> statements.
+
+17/Aug/2019:
+Continued conversion from <if> to <switch>.
+
+20/Oct/2019:
+Fixed a few things I had broken.
+Due to Vincent being born and getting the team lead position, time is low, and haven't had time to update as often.
+
+20/Dec/2019:
+Remodeled the Inventory Screen, played with a few options, but this seems to be the best for now.
+- Added a Material Gathering button masher to the game, just before you leave to go into the world.
+
+Ideas/Areas to Update:
+Added a part for Remodeling the town, after you beat the monsters. Just need to code the way to exit the Material Gathering and start the Rebuilding part, as well as defining what each building needs in order to be rebuilt, and the rewards associated.
+- Just made the code to exit the Material Gathering part, and a way to access the building menu, but cannot do anything with it yet.
+Still need to create a baseline for Stamina and Magic bars, so that you cannot just spam your best attacks and spells.
+
+21/Dec/2019:
+Switched the inventory menu back to I had it before.
+Got the first part of the Remodeling Menu to work. Need to fix the process where, once you have enough wood and stone, the house is completed.
+
+22/Dec/2019:
+Worked out the Remodeling Menu.
+
+Ideas/Areas to Update:
+- Need to make a reward system for when a player unlocks the Rebuild Menu, and further when one unlocks the Remodeling of the Businesses.
+
+24/Dec/2019:
+Updated to v. 0.0.5
+Reworked the code for the Remodeling system. Made it more of a construct, than just slapping some code down.
+Made it to where when you get the special stuff, a button shows up above the Inventory, that way it still looks neat and tidy.
+Increased the overall size of the text in the game. Got tired of squinting at my damned screen.
+Found a bug that if you left the rebuild menu and you had unlocked the secret buildings, they would not show up after you came back. That is now fixed.
+Made the buttons to the special unlocks a bit better, in my opinion.
+
+Ideas/Areas to Update:
+- Need to make the Weapons and Armor Forges, and give the player some weeds to make some putrid potions out of.
+It would be fun to envision the first town and come up with a math way of having buildings take damage as you fight whatever bad guy. Like, you get sent flying back and take out the supporting pillar of a house, and that causes the whole house to crumble. Then, you can choose to stay and help rebuild.
+
+26/Dec/2019:
+Took the constructive criticism of some of the testers and fixed some spelling errors, made the Console bigger, and was finally able to fix the inventory menu the way I wanted it from the beginning.
+Added a few craft-able weapons and set up the stats, but haven't made the function to add the stats to the player, once forging is completed.
+
+Ideas/Areas to Update:
+- Need to get the function completed to add the stats of the forged weapon to the player, and remove the stats from the currently held weapon.
+
+27/Dec/2019:
+Fixed a few bugs I had in the bad side, it should all be playable, the way I want it now.
+Fixed a few typos, and spelling mishaps.
+Added a on-focus effect for the form that you use to input your answers, that way you can tell if you are still on a button, or inside the console.
+
+Ideas/Areas to Update:
+- Still need to make the function to push the forged weapons and purge the currently equipped weapons.
+
+30/Dec/2019:
+Updated to v. 0.0.6
+Finally got the other 2 weapons to proc.
+Cleaned up some of the verbiage and made the console log less bloated by "no, do this", as it isn't really needed.
+Fixed the menus to act how I want them to, between the different layers of button mashers.
+Found a real annoying issue with trying to use the health potions for the Warrior and the Archer. Got that fixed, thanks to someone at Stack Overflow.
+
+31/Dec/2019:
+Updated to v. 0.0.7
+After patching the Potion issue, I noticed that I needed to add another <break;> to my switch statement, due to the battle system being broken when calling the Hero and Enemy turns.
+Completed the Armor for the Warrior and the Archer, and both proc.
+Made the ability to fight before heading to the shop an option, instead of only being able to get back to the fight after going to the shop.
+Added code so that one has to add at least 3 characters and no more than 20 characters to the name field.
+
+Ideas/Areas to Update:
+- Need to create a monster that drops thread and create a spindle to weave the thread into silk, so that mages can create clothes.
+
+-------------------------------------------------------------------------------------------
+                                        2020
+-------------------------------------------------------------------------------------------
+
+09/Jan/2020:
+Haven't updated the update log, even though I've been working the code.
+I had added some health bars, and got those working, and then changed my mind... wanted Health, Stamina, and Magic to all be in a circle format. Finally got the circles to work right.
+Added bars to the Experience menu, yay, an exp bar!
+Making the dynamics of the page a bit more appealing. Working pretty heavily in granulation within the divs.
+
+10/Jan/2020:
+There was a miscalculation I had on calculating whether the players character could damage the enemy and vise versa... fixed that.
+Cleared up some of the annoying prompts when you don't have enough mats.
+General look over code after adding the Intelligence modifier for the player revealed that I wasn't removing some of the unequipped items' stats.
+
+13/Jan/2020:
+Updated to v. 0.0.8
+Went in and changed the enemy layout for the beginner town. Now all you'll face are Imps and Bandits, but increased the enemy's stats too, to make things a bit more balanced.
+Reduced starting gold to near nothing, and made it to where gold drops are more balanced, to where you cannot just clean the shop out the first time you hit it.
+Changed up the amount of HP and MP that the potions give to the player.
+
+Ideas/Areas to Update:
+- Want to make the outcome of the strength of the monster's attack random between 1/2 and full power attacks.
+
+16/Jan/2020:
+Sent some folks my latest copy since making changes to the battle system, and it was all kinds of broken:
+- Reinvented how the potions work. At current time, there is only the Minor Potions, and I set those to fill 1/4 of the overall max of each respective modifier.
+^ This was quite hard to do, cause my syntax was all over the place, but at least now I made it a bit more readable... at least to myself.
+- Took a considerable amount of work to make the battle system work how I wanted. Basically, there is now a way of keeping track of how much damage or how much you use of your Stamina or Mana. That is then applied to the next loop through the battle start function, and then reset, unless the enemy never got to take a turn.
+- Added health, stamina, and mana potions to the shop, and made sure they are in working order.
+- Had a hiccup where the Level Up system wasn't working, got that fixed.
+
+Just noticed that some of the continue battle function was just taking up space, so got rid of it.
+
+18/Jan/2020:
+Fixed more wonky code in the battle menu, I think I may have finally got it all done.
+Actually worked out how to code the Inventory a bit better. Now when the screen resizes and or the div gets mooshed, it retains it's format, at least.
+Moved the experience bar into the battle menu to save browser real estate.
+
+19/Jan/2020:
+Updated to v. 0.0.9
+Finally goth the battle system to become fully functioning... found a bug where the maxHealth and battleHealth weren't parsing after gaining access to the forged and tanned equipment, that is now fixed.
+Added versioning to the site, right below the welcome sign.
+
+Ideas/Areas to Update:
+- Need to add a monster that has silk, so that I can finish the Mage's armor. Need to also create the potion making portion of the special menu, and make them OP as well.
+Potions will need vials, which will be made from glass, which is a good reason I added it so long ago.
+Once I am finished making these two changes, I believe it will finally be time to start furthering the story.
+
+21/Jan/2020:
+Added the creature that gives Silk, and created the clothery.
+Fixed a bug where if you were making glass that the Wood and or Sand would go into the negative numbers.
+Tried to increase the aesthetics of the Inventory more, since the yellow numbers with yellow text just seemed bland.
+Got the mage's weapon to parse, but it's throwing a null value into the battle mana.
+^ Got the null to parse the info correctly.
+
+22/Sep/2020:
+Reworking the Potions portion of the coding, and am stuck because the code will not parse the name and the amount on-hand for some odd reason. If you use one the number of will decrease on the page, but will not show name still. Using the Console in Mozilla does show that the program sees the Name and the Amount Of the potions, but will not push it to the HTML for some unknown reason.
+
+23/Sept/2020:
+Thanks to Joshua Feldman reminding me that my way of updating the document.getElementByID is in the UpdatePlayerCharacter.js library. Updated that and now the potions are pushing to the html.
+
+-------------------------------------------------------------------------------------------
+                                        2021
+-------------------------------------------------------------------------------------------
+
+25/Oct/2021:
+Rework of the Shop system is a maddening thing. It simply is not liking anything I attempt to do.
+
+-------------------------------------------------------------------------------------------
+                                        2022
+-------------------------------------------------------------------------------------------
+
+20/Jan/2022:
+Finally getting the Shop system back into working order.
+
+23/Jan/2022:
+This will be updated to version 0.0.10
+Shop has returned to service. Had to create a new container for Clothing and Potions to show up.
+At this point I really wish I was better with Arrays, as I would like to build out the items and shops better than what I have it thus far, and more dynamic.
+
+4/June/2022:
+Past couple of days I was in the mood to work on this project again. I was able to fix a few issues here and there, and got the player rewards working (weapons and armor). Tested and see that all three are behaving as they should.
+
+21/June/2022:
+Been working on getting the Battle code to work correctly for Mages after completing the weapon and armor casting. In doing so, I now realize that I was making a mistake in logic. Instead of wanting an increase to the mana pool from intelligence, I really want intelligence to boost the level of attack, which means I need to rewrite the way mana and intelligence is handled.
+
+22/June/2022:
+Noticed a flaw in the battle system not updating the player's Stamina and Magic after level up until a time or two starting battle again. I needed to nest the if statements in the BattleStats.js in the newStats() function to make it work correctly. I also updated the mage more to my liking, but now they are a bit OP, so... I'll need to look into balancing the stats given to the mage's equipment and how I want to really balance the level up system.
+
+If you put the time in to forge weapons and armor, if you go to the shop and choose a weapon or armor that is less powerful than your current weapon, it will not allow you to buy it.
+
+23/June/2022:
+Cleaned up more code. Saw that after using material to forge equipment, that once you fight again, it's like you never used the material before and just add more on top. Fixed that so it is actually using the mats and then awards new correctly. Was some issue with mana potions making BattleMana = Nan... fixed that by taking the formatNumber() off of the output line. Next I need to add an option to Battle for escaping while in battle, for those times you run out of stamina or mana without any potions. That and there is some type of issue where the options are not working the way I want when going from the creation slots back to the normal game.
+
+26/June/2022:
+Was able to clean the code a bit for the shop system. I deleted the verbiage in the javascript and updated the numbering in the shop inventory screen html div for Warrior, Archer, and Mage.
+
+4/July/2022:
+Added a check to see if potions are at 0, and if so to replace what it is called to None. Also added an addition when buying a potion to push its name too. Made the buttons for the Weapons and Armor creation menus go back to hidden once the corresponding weapon or armor has been completed and the player closes said menu.
+
+16/Nov/2022:
+Noticed there was a bug where it was letting players go to the rebuild menu without first going to the gathering menu. Added a function to check to see if you have any building material, and if that is false, don't open the rebuild menu. Found some misc coding in the html file for the shop that didn't really need to be there.
+
+19/Nov/2022:
+Trying to work on an NPC function for rebuilding the first town. I have the NPC's built, and the NPCs are called along with enemies that are fighting with them. The balance isn't right, and the function just seems to call new fights endlessly, so that is doing no good. I will need to code it to where when the enemy defeats the NPC, they die and are gone for good (or something like a maybe incapacitated maybe dead scenario?).
+
+-------------------------------------------------------------------------------------------
+                                        2023
+-------------------------------------------------------------------------------------------
+
+26/Feb/2023:
+Found that I didn't properly end the first if statement in the enemy npc win code, so fixed that.
+Both NPCs and Enemy NPCs are taking damage now, so that part is fixed. Looks like some type of weird error is happening when you mess up and hit enter instead of making a choice in midst battle, freezing the browser (have to close/reopen browser to get it to work again).
+
+27/Feb/2023:
+Fixed the error by adding a default to the attack type of "Nope, use one of the methods I told you to."
+Trying to capture the overall strength of the team, that way they can help with gathering material to build with, but the code isn't working to get the total strength of the survivors.
+
+-------------------------------------------------------------------------------------------
+                                        2024
+-------------------------------------------------------------------------------------------
+
+16/Aug/2024:
+Have been working hard trying to update many things about the coding. Today I was able to make some of the buttons, views, and various inputs work the way I wanted. Still, need to work to reduce the visible buttons to what makes sense for context of what you might be doing.
