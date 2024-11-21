@@ -653,14 +653,14 @@ let toggleProductionMenu = function() {
                 switch (toggleInventoryMenuStatus) {
                     case false:
                         getProductionMenu.style.display = "none";
-                        getInventoryMenu.style.display = "block";
+                        getInventoryMenu.style.display = "none";
                         getShopMenu.style.display = "none";
                         getMain.style.display = "none";
                         break;
                     case true:
                         getProductionMenu.style.display = "none";
                         getInventoryMenu.style.display = "block";
-                        getShopMenu.style.display = "block";
+                        getShopMenu.style.display = "none";
                         getMain.style.display = "none";
                         break;
                 }
