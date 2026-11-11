@@ -159,7 +159,7 @@ function warriorsWeaponCreationSheath() {
     }
 }
 function warriorsRespite() {
-    switch(creationStats.warriorRespiteSheath == 1 && creationStats.warriorRespiteCore == 1 && creationStats.warriorRespiteSheath == 1) {
+    switch(creationStats.warriorRespiteSheath == 1 && creationStats.warriorRespiteCore == 1 && creationStats.warriorRespiteHilt == 1) {
         case true:
             creationStats.warriorRespiteCore--;
             creationStats.warriorRespiteHilt--;

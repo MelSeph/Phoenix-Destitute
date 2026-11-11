@@ -128,26 +128,22 @@ function gender() {
     }
 }
 function setName() {
-    var max_len = 20;
-    var min_len = 2;
-    for (i = 0; i < playerInfo.name.length; i++) {
-        if (playerInfo.name.length < min_len) {
-            $("<p>We need to call you something... what is your name? \r\nNo one in 'this world' only has a one letter name.</p>").insertAfter("#placeholder");
-            playerInfo.name = "Spirit";
-            break;
-        }
-        else if (playerInfo.name.length > max_len) {
-            $("<p>There is a maximum number of " + max_len + " characters, your name is too long, please try again.</p>").insertAfter("#placeholder");
-            playerInfo.name = "Spirit";
-            break;
-        }
-        else if (playerInfo.name.length <= max_len && playerInfo.name.length >= min_len) {
-            $("<p>What would you like to be, a warrior, an archer, or a mage?</p>").insertAfter("#placeholder");
-            playerInfo.name = titleCase(input);
-            playerInfo.area = "Set Class";
-            break;
-        }
+    const max_len = 20;
+    const min_len = 2;
+    const name = input.trim();
+
+    if (name.length < min_len) {
+        $("<p>We need to call you something... what is your name? \r\nNo one in 'this world' only has a one letter name.</p>").insertAfter("#placeholder");
+        return;
     }
+    if (name.length > max_len) {
+        $("<p>There is a maximum number of " + max_len + " characters, your name is too long, please try again.</p>").insertAfter("#placeholder");
+        return;
+    }
+
+    $("<p>What would you like to be, a warrior, an archer, or a mage?</p>").insertAfter("#placeholder");
+    playerInfo.name = titleCase(name);
+    playerInfo.area = "Set Class";
 }
 function setClass() {
     switch (input) {

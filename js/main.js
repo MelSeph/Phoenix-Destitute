@@ -2,7 +2,6 @@
 let version = document.querySelector(".version").innerHTML = "0.0.2";
 let input;
 let mainArea = 'Endora';
-$("#console").fadeIn(3000); //Console fades in slowly.
 
 // This is the main game function
 $(document).ready(function() {
@@ -10,8 +9,6 @@ $(document).ready(function() {
         if (key.which === 13 && $('#command_line').is(':focus')) { //If enter key is pressed and the focus is on the command line:
             input = $('#command_line').val().toLowerCase(); //Express what is in the command line in lower case.
             $('#command_line').val(""); //Erase the value of what is shown in the command box after enter has been released.
-			$(".console-box").animate({ scrollBottom: $('.console-box').get(0).scrollHeight }, 'slow'); //Scroll the console to the bottom.
-
             // This is the initial phase of the game to build the user profile
             while (playerInfo.area == "Pre-Start") {
                 switch (input) {
@@ -41,7 +38,9 @@ $(document).ready(function() {
             }
             while (playerInfo.area == "Set Class") {
 				setClass();
-                toggleCheatButton();
+                if (playerInfo.area === "Start") {
+                    toggleCheatButton();
+                }
                 return;
             }
             // This concludes the character creation part

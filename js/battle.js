@@ -120,6 +120,11 @@ function Attack() {
 		checkH();
 		return;
 	}
+	if (playerInfo.classType == "Archer" && playerStats.numArrows <= 0) {
+		$("<p>Sorry, you cannot use this attack, as you have no more arrows in stock.</p>").insertAfter("#battle-placeholder");
+		checkE();
+		return;
+	}
 	if (enemyStats.defense > playerStats.strength * 5 && playerInfo.classType == "Archer") {
 		$("<p>Your attack had no effect on the " + enemyInfo.name + ".</p>").insertAfter("#battle-placeholder");
 		playerStats.battleStamina -= 10;
@@ -135,13 +140,7 @@ function Attack() {
 		return;
 	}
 	else {
-		if (playerInfo.classType == "Archer" && playerStats.numArrows == 0) {
-			$("<p>Sorry, you cannot use this attack, as you have no more arrows in stock.</p>").insertAfter("#battle-placeholder");
-			playerStats.numArrows --;
-			checkE();
-			return;
-		}
-		if (playerInfo.classType == "Archer" && playerStats.numArrows != 0) {
+		if (playerInfo.classType == "Archer" && playerStats.numArrows > 0) {
 			$("<p>You just used your " + playerInfo.leftHand + " and " + playerStats.rightHand + " and damaged " + enemyInfo.name + " for " + formatNumber(playerStats.strength * 5) + " damage!<br />The enemy defends " + formatNumber(enemyStats.defense) + " damage.</p>").insertAfter("#battle-placeholder");
 			playerStats.numArrows--;
 			enemyStats.battleHealth = Math.round ((enemyStats.battleHealth + enemyStats.defense) - (playerStats.strength * 5));
