@@ -312,3 +312,17 @@ Trying to capture the overall strength of the team, that way they can help with 
 
 16/Aug/2024:
 Have been working hard trying to update many things about the coding. Today I was able to make some of the buttons, views, and various inputs work the way I wanted. Still, need to work to reduce the visible buttons to what makes sense for context of what you might be doing.
+
+-------------------------------------------------------------------------------------------
+                                        2025
+-------------------------------------------------------------------------------------------
+
+2/Sept/2025:
+It has been quite some time since the last time I was able to work on this project.
+
+Updates: 
+- Added a cheat system, and all the buttons that go along with it, that activates after choosing your Class.
+- Added an item creation option within Endora for those that choose to help restore the city. So, far, just one item has been added, but plan to do more as I have time.
+To Do:
+- There are way too many issues/bugs with the open-and-close system right now, and I need to get that working the way I envision it working.
+- Right now, most of the cheats are not updating everywhere as they should... not really sure why not, but alas... They still work, but not all visuals update in real-time to see the changes.

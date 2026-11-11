@@ -8,6 +8,10 @@ const mapPropNameToElementIdArcher = (propName) => "archer." + propName;
 const mapPropNameToElementIdMage = (propName) => "mage." + propName;
 const mapPropNameToElementIdMaterialName = (propName) => "materialName." + propName;
 const mapPropNameToElementIdMaterial = (propName) => "materialStats." + propName;
+const mapPropNameToElementIdCreationName = (propName) => "creationName." + propName;
+const mapPropNameToElementIdCreation = (propName) => "creationStats." + propName;
+const mapPropNameToElementIdCheatStats = (propName) => "cheatStats." + propName;
+const mapPropNameToElementIdCheatName = (propName) => "cheatName." + propName;
 // Takes two strings, updates textContent of matching element if possible
 function setElementTextById(id, text){
     element = document.getElementById(id);
@@ -26,6 +30,10 @@ setInterval(function printInfoToPage(){
     const magePropNames = Object.keys(mage);
     const materialNamePropNames = Object.keys(materialName);
     const materialPropNames = Object.keys(materialStats);
+    const creationNamePropNames = Object.keys(creationName);
+    const creationPropNames = Object.keys(creationStats);
+    const cheatNamePropNames = Object.keys(cheatName);
+    const cheatStatsPropNames = Object.keys(cheatStats);
     // `for...of` loops through array
     for(let prop of playerStatsPropNames){
         // Gets IDs
@@ -96,6 +104,38 @@ setInterval(function printInfoToPage(){
         const elementId = mapPropNameToElementIdMaterial(prop);
         // Gets value
         const storedValue = formatNumber(materialStats[prop]);
+        // Updates element on page
+        setElementTextById(elementId, storedValue);
+    }
+    for(let prop of creationNamePropNames){
+        // Gets IDs
+        const elementId = mapPropNameToElementIdCreationName(prop);
+        // Gets value
+        const storedValue = creationName[prop];
+        // Updates element on page
+        setElementTextById(elementId, storedValue);
+    }
+    for(let prop of creationPropNames){
+        // Gets IDs
+        const elementId = mapPropNameToElementIdCreation(prop);
+        // Gets value
+        const storedValue = formatNumber(creationStats[prop]);
+        // Updates element on page
+        setElementTextById(elementId, storedValue);
+    }
+    for(let prop of cheatNamePropNames){
+        // Gets IDs
+        const elementId = mapPropNameToElementIdCheatName(prop);
+        // Gets value
+        const storedValue = cheatStats[prop];
+        // Updates element on page
+        setElementTextById(elementId, storedValue);
+    }
+    for(let prop of cheatStatsPropNames){
+        // Gets IDs
+        const elementId = mapPropNameToElementIdCheatStats(prop);
+        // Gets value
+        const storedValue = formatNumber(cheatStats[prop]);
         // Updates element on page
         setElementTextById(elementId, storedValue);
     }

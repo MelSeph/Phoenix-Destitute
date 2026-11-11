@@ -25,11 +25,11 @@ let enemyInfo = new NemesisInfo ('None');
 let enemyStats = new NemesisStats (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
 let impName = new NemesisInfo ('Imp');
-let impStats = new NemesisStats (10,5,10,2,5,5,1,1,300,5,10,5,10,10,5,10);
+let impStats = new NemesisStats (10,5,5,2,10,1,0,1,2,10,10,5,5,10,5,5);
 let banditName = new NemesisInfo ('Bandit');
-let banditStats = new NemesisStats (25,20,0,5,10,5,1,2,300,30,25,20,0,25,20,0);
+let banditStats = new NemesisStats (25,20,0,5,10,5,1,2,15,12,25,20,0,25,20,0);
 let banditBossName = new NemesisInfo ('Bandit Boss');
-let banditBossStats = new NemesisStats (50,50,0,15,30,999999,99999,9999,999999999,99999999,50,50,0,50,50,0);
+let banditBossStats = new NemesisStats (50,50,0,15,30,10,5,3,90,30,50,50,0,50,50,0);
 
 let endoraEnemyArray = [
     'Imp', 'Bandit', 'Bandit Boss'

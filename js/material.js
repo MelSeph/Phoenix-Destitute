@@ -1,18 +1,19 @@
 //This will be an area to build out any material needed to build or make something.
-let materialName = function(ore,rawhide,silk,core,stone,wood,sand,metal,leather,silkCloth,magiCore) {
+let materialName = function(ore,rawhide,silk,core,stone,wood,glass,sand,metal,leather,silkCloth,magiCore) {
     this.ore = ore;
     this.rawhide = rawhide;
     this.silk = silk;
     this.core = core;
     this.stone = stone;
     this.wood = wood;
+    this.glass = glass;
     this.sand = sand;
     this.metal = metal;
     this.leather = leather;
     this.silkCloth = silkCloth;
     this.magiCore = magiCore;
 }
-let materialStats = function(ore,rawhide,silk,core,stone,wood,sand,metal,leather,silkCloth,magiCore,stonehealth,woodhealth,sandhealth,stonemaxhealth,woodmaxhealth,sandmaxhealth) {
+let materialStats = function(ore,rawhide,silk,core,stone,glass,wood,sand,metal,leather,silkCloth,magiCore,stonehealth,woodhealth,sandhealth,stonemaxhealth,woodmaxhealth,sandmaxhealth) {
     this.ore = ore;
     this.rawhide = rawhide;
     this.silk = silk;
@@ -21,6 +22,7 @@ let materialStats = function(ore,rawhide,silk,core,stone,wood,sand,metal,leather
     this.wood = wood;
     this.sand = sand;
     this.metal = metal;
+    this.glass = glass;
     this.leather = leather;
     this.silkCloth = silkCloth;
     this.magiCore = magiCore;
@@ -40,6 +42,7 @@ materialName.core = "Core";
 materialName.stone = "Stone";
 materialName.wood = "Wood";
 materialName.sand = "Sand";
+materialName.glass = "Glass";
 // Amount of materials harvested:
 materialStats.ore = 0;
 materialStats.rawhide = 0;
@@ -48,6 +51,7 @@ materialStats.core = 0;
 materialStats.stone = 0;
 materialStats.wood = 0;
 materialStats.sand = 0;
+materialStats.glass = 0;
 //Health of materials until harvested, changes:
 materialStats.stonehealth = 100;
 materialStats.woodhealth = 100;
@@ -58,10 +62,22 @@ materialStats.woodmaxhealth = 100;
 materialStats.sandmaxhealth = 100;
 // Misc status affects:
 let multiplier = 2;
-let massivematerials = 9999999; //Cheat
 let timesMined = 0; //Times harvested stone.
 let timesChopped = 0; //Times harvested wood.
 let timesScooped = 0; //Times harvested sand.
+gathered = 0;
+
+function hasGathered() {
+    if (timesMined > 0 || timesChopped > 0 || timesScooped > 0) {
+        gathered++;
+        switch(gathered) {
+            case 1:
+                toggleRebuildButton();
+                break;
+        }
+        return;
+    }
+}
 
 applyChangeStone();
 applyChangeWood();
@@ -70,12 +86,13 @@ applyChangeSand();
 function stone() {
     if(materialStats.stonehealth > 0) {
         materialStats.stonehealth -= playerStats.strength;
+        hasGathered();
         if(materialStats.stonehealth <= 0 && timesMined >= 0) {
-            //materialStats.stone++; //Uncomment to run game normally.
-            materialStats.stone += massivematerials; //Comment out to run game normally, after uncommenting materialStats.stone++.
+            materialStats.stone++; //Uncomment to run game normally.
+            // materialStats.stone += massivematerials; //Comment out to run game normally, after uncommenting materialStats.stone++.
             materialStats.stone1 = materialStats.stone;
-            //materialStats.ore++; //Uncomment to run game normally.
-            materialStats.ore += massivematerials; //Comment out to run game normally, after uncommenting materialStats.stone++.
+            materialStats.ore++; //Uncomment to run game normally.
+            // materialStats.ore += massivematerials; //Comment out to run game normally, after uncommenting materialStats.stone++.
             timesMined = materialStats.stone1;
             materialStats.stonehealth = materialStats.stonemaxhealth;
             if(materialStats.stonehealth <= 0 && timesMined >= 100) {
@@ -118,9 +135,10 @@ function stone() {
 function wood() {
     if(materialStats.woodhealth > 0) {
         materialStats.woodhealth -= playerStats.strength;
+        hasGathered();
         if(materialStats.woodhealth <= 0 && timesChopped >= 0) {
-            //materialStats.wood++;
-            materialStats.wood += massivematerials;
+            materialStats.wood++;
+            // materialStats.wood += massivematerials;
             materialStats.wood1 = materialStats.wood;
             timesChopped = materialStats.wood1;
             materialStats.woodhealth = materialStats.woodmaxhealth;
@@ -158,9 +176,10 @@ function wood() {
 function sand() {
     if(materialStats.sandhealth > 0) {
         materialStats.sandhealth -= playerStats.strength;
+        hasGathered();
         if(materialStats.sandhealth <= 0 && timesScooped >= 0) {
-            //materialStats.sand++;
-            materialStats.sand += massivematerials;
+            materialStats.sand++;
+            // materialStats.sand += massivematerials;
             materialStats.sand1 = materialStats.sand;
             timesScooped = materialStats.sand1;
             materialStats.sandhealth = materialStats.sandmaxhealth;

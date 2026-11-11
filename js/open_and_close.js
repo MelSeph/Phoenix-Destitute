@@ -11,6 +11,7 @@ let toggleShopButtonStatus = false;
 let toggleGatherButtonStatus = false;
 let toggleRebuildButtonStatus = false;
 let toggleProductionButtonStatus = false;
+let toggleCheatButtonStatus = false;
 // Menus:
 let toggleMenuStatus = false;
 let toggleInventoryMenuStatus = false;
@@ -18,7 +19,6 @@ let toggleBattleMenuStatus = false;
 let toggleShopMenuStatus = false;
 let toggleGatherMenuStatus = false;
 let toggleRebuildMenuStatus = false;
-let gatherButtonToggled = false;
 let toggleProductionMenuStatus = false;
 let toggleWeaponSmithOn = false;
 let toggleArmorSmithOn = false;
@@ -26,13 +26,16 @@ let toggleApothecaryBuildingOn = false;
 let toggleForgeOn = false;
 let toggleTannerOn = false;
 let toggleApothecaryOn = false;
-
+let toggleRespiteOff = false;
+let toggleCheatMenuStatus = false;
 // Define Get elements:
 // Buttons:
 let getShopButton = document.querySelector(".btn-toggle-shop");
 let getGatherButton = document.querySelector(".btn-toggle-gather");
 let getRebuildButton = document.querySelector(".btn-toggle-rebuild");
 let getProductionButton = document.querySelector(".btn-toggle-production");
+let getRespiteToggle = document.querySelector(".respite");
+let getCheatButton = document.querySelector(".btn-toggle-cheat");
 // Menus:
 let getMain = document.querySelector("main");
 let getStatsMenu = document.querySelector(".wrapper-stats");
@@ -55,6 +58,7 @@ let getApothecaryBuildingMenu = document.querySelector(".apothecary-building-vis
 let getForgeMenu = document.querySelector(".forge-visible");
 let getTannerMenu = document.querySelector(".tanner-visible");
 let getApothecaryMenu = document.querySelector(".apothecary-visible");
+let getCheatMenu = document.querySelector(".cheat-wrapper");
 
 // Buttons:
 // Shop Button
@@ -106,6 +110,19 @@ let toggleProductionButton = function() {
         case true:
             getProductionButton.style.display = "none";
             toggleProductionButtonStatus = false;
+            break;
+    }
+}
+// Cheat Button
+let toggleCheatButton = function() {
+    switch (toggleCheatButtonStatus) {
+        case false:
+            getCheatButton.style.display = "flex";
+            toggleCheatButtonStatus = true;
+            break;
+        case true:
+            getCheatButton.style.display = "none";
+            toggleCheatButtonStatus = false;
             break;
     }
 }
@@ -353,30 +370,8 @@ let toggleGatherMenu = function() {
                 getMain.style.display = "none";
                 break;
         };
-        gatherButtonToggled = true;
         toggleGatherMenuStatus = true;
     } else if (toggleGatherMenuStatus === true) {
-        switch (gatherButtonToggled) {
-            case true:
-                switch (toggleRebuildButtonStatus) {
-                    case false:
-                        toggleRebuildButton();
-                        $("<p>The option to help the town rebuild is now open. Please click the rebuild button to do that, or would you rather visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
-                        break;
-                    case true:
-                        break;
-                }
-                break;
-            case false:
-                switch (toggleRebuildButtonStatus) {
-                    case false:
-                        break;
-                    case true:
-                        $("<p>Press the rebuild button to continue repairing, or would you rather visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
-                        break;
-                }
-                break;
-        }
         switch (toggleInventoryMenuStatus) {
             case false:
                 switch (toggleShopMenuStatus) {
@@ -477,27 +472,6 @@ let toggleRebuildMenu = function() {
         };
         toggleRebuildMenuStatus = true;
     } else if (toggleRebuildMenuStatus == true) {
-        switch (toggleRebuildButtonStatus) {
-            case true:
-                switch (toggleProductionButtonStatus) {
-                    case false:
-                        toggleProductionButton();
-                        $("<p>The option to use any production facilities you helped rebuild has now unlocked. Please click the production button to do that, or would you rather visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
-                        break;
-                    case true:
-                        break;
-                }
-            break;
-            case false:
-                switch (toggleProductionButtonStatus) {
-                    case false:
-                        break;
-                    case true:
-                        $("<p>The option to use the production facilities you helped rebuild has now unlocked. Please click the production button to do that, or would you rather visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
-                        break;
-                }
-            break;
-        }
         switch (toggleInventoryMenuStatus) {
             case false:
                 switch (toggleShopMenuStatus) {
@@ -653,20 +627,33 @@ let toggleProductionMenu = function() {
                 switch (toggleInventoryMenuStatus) {
                     case false:
                         getProductionMenu.style.display = "none";
-                        getInventoryMenu.style.display = "none";
+                        getInventoryMenu.style.display = "block";
                         getShopMenu.style.display = "none";
                         getMain.style.display = "none";
                         break;
                     case true:
                         getProductionMenu.style.display = "none";
                         getInventoryMenu.style.display = "block";
-                        getShopMenu.style.display = "none";
+                        getShopMenu.style.display = "block";
                         getMain.style.display = "none";
                         break;
                 }
                 break;
         };
         toggleProductionMenuStatus = false;
+    }
+}
+// Cheat Menu
+let toggleCheatMenu = function() {
+    if(toggleCheatMenuStatus == false) {
+        getCheatMenu.style.display = "block";
+        toggleCheatMenuStatus = true;
+        return;
+    }
+    else if (toggleCheatMenuStatus == true) {
+        getCheatMenu.style.display = "none";
+        toggleCheatMenuStatus = false;
+        return;
     }
 }
 
@@ -746,6 +733,15 @@ let toggleApothecary = function() {
         case true:
             getApothecaryMenu.style.display = "none";
             toggleApothecaryOn = false;
+            break;
+    };
+}
+// Special Stuff
+let toggleRespite = function() {
+    switch (toggleRespiteOff) {
+        case false:
+            getRespiteToggle.style.display = "none";
+            toggleRespiteOff = true;
             break;
     };
 }

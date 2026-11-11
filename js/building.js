@@ -16,24 +16,24 @@ function BuildingStats(min,max,stone,wood,glass,rebuilt,maxStone,maxWood,gold) {
 }
 //Residents:
 let janceInfo = new BuildingInfo("Jance House","Belladonna Jance");
-let janceStats = new BuildingStats(0,100,0,0,0,0,0,0,99999); //default gold: 50
+let janceStats = new BuildingStats(0,100,0,0,0,0,0,0,15); //default gold: 50
 let renoInfo = new BuildingInfo("Reno House","Raymond Reno");
-let renoStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let renoStats = new BuildingStats(0,100,0,0,0,0,0,0,20);
 let rajInfo = new BuildingInfo("Raj House","Daniel Raj");
-let rajStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let rajStats = new BuildingStats(0,100,0,0,0,0,0,0,25);
 let greyInfo = new BuildingInfo("Grey House","Abigail Grey");
-let greyStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let greyStats = new BuildingStats(0,100,0,0,0,0,0,0,30);
 let thaneInfo = new BuildingInfo("Thane House","Helena Thane");
-let thaneStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let thaneStats = new BuildingStats(0,100,0,0,0,0,0,0,35);
 let hildtInfo = new BuildingInfo("Hildt House","John Hildt");
-let hildtStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let hildtStats = new BuildingStats(0,100,0,0,0,0,0,0,40);
 //Production:
 let weaponSmithyInfo = new BuildingInfo("Weapon Smithy","Drog");
-let weaponSmithyStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let weaponSmithyStats = new BuildingStats(0,100,0,0,0,0,0,0,100);
 let armorSmithyInfo = new BuildingInfo("Armor Smithy","Ariel");
-let armorSmithyStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let armorSmithyStats = new BuildingStats(0,100,0,0,0,0,0,0,100);
 let apothecaryInfo = new BuildingInfo("Apothecary","Cait");
-let apothecaryStats = new BuildingStats(0,100,0,0,0,0,0,0,99999);
+let apothecaryStats = new BuildingStats(0,100,0,0,0,0,0,0,100);
 //Rebuild Material Exceeded:
 janceStoneMax = 0;
 janceWoodMax = 0;
@@ -53,6 +53,8 @@ armorSmithStoneMax = 0;
 armorSmithWoodMax = 0;
 apothecaryStoneMax = 0;
 apothecaryWoodMax = 0;
+allEndoraRebuilt = false;
+prodFacRebuilt = false;
 
 //Repair:
 function janceStone() {
@@ -76,6 +78,7 @@ function janceStone() {
     if(janceStats.min == 100 && janceStats.rebuilt != 1) {
         playerStats.gold += janceStats.gold;
         janceStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ janceInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Jance House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -101,6 +104,7 @@ function janceWood() {
     if(janceStats.min == 100 && janceStats.rebuilt != 1) {
         playerStats.gold += janceStats.gold;
         janceStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ janceInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Jance House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -126,6 +130,7 @@ function renoStone() {
     if(renoStats.min == 100 && renoStats.rebuilt != 1) {
         playerStats.gold += renoStats.gold;
         renoStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ renoInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Reno House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -151,6 +156,7 @@ function renoWood() {
     if(renoStats.min == 100 && renoStats.rebuilt != 1) {
         playerStats.gold += renoStats.gold;
         renoStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ renoInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Reno House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -176,6 +182,7 @@ function rajStone() {
     if(rajStats.min == 100 && rajStats.rebuilt != 1) {
         playerStats.gold += rajStats.gold;
         rajStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ rajInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Raj House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -201,6 +208,7 @@ function rajWood() {
     if(rajStats.min == 100 && rajStats.rebuilt != 1) {
         playerStats.gold += rajStats.gold;
         rajStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ rajInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Raj House!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -227,6 +235,7 @@ function greyStone() {
         toggleWeaponSmith();
         playerStats.gold += greyStats.gold;
         greyStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ greyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Grey House! The Grey family also own a weapon smith that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -253,6 +262,7 @@ function greyWood() {
         toggleWeaponSmith();
         playerStats.gold += greyStats.gold;
         greyStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ greyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Grey House! The Grey family also own a weapon smith that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -279,6 +289,7 @@ function thaneStone() {
         toggleArmorSmith();
         playerStats.gold += thaneStats.gold;
         thaneStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ thaneInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Thane House! The Thane family also own an armor smith that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -305,6 +316,7 @@ function thaneWood() {
         toggleArmorSmith();
         playerStats.gold += thaneStats.gold;
         thaneStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ thaneInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Thane House! The Thane family also own an armor smith that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -331,6 +343,7 @@ function hildtStone() {
         toggleApothecaryBuilding();
         playerStats.gold += hildtStats.gold;
         hildtStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ hildtInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Hildt House! The Hildt family also own an apothecary that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -357,6 +370,7 @@ function hildtWood() {
         toggleApothecaryBuilding();
         playerStats.gold += hildtStats.gold;
         hildtStats.rebuilt = 1;
+        allRebuilt();
         $("<p> "+ hildtInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Hildt House! The Hildt family also own an apothecary that needs to be repaired.</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -383,6 +397,8 @@ function weaponSmithyStone() {
         toggleForge();
         playerStats.gold += weaponSmithyStats.gold;
         weaponSmithyStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ weaponSmithyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Weapon Smithy!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -409,6 +425,8 @@ function weaponSmithyWood() {
         toggleForge();
         playerStats.gold += weaponSmithyStats.gold;
         weaponSmithyStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ weaponSmithyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Weapon Smithy!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -435,6 +453,8 @@ function armorSmithyStone() {
         toggleTanner();
         playerStats.gold += armorSmithyStats.gold;
         armorSmithyStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ armorSmithyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Armor Smithy!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -461,6 +481,8 @@ function armorSmithyWood() {
         toggleTanner();
         playerStats.gold += armorSmithyStats.gold;
         armorSmithyStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ armorSmithyInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Armor Smithy!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -487,6 +509,8 @@ function apothecaryStone() {
         toggleApothecary();
         playerStats.gold += apothecaryStats.gold;
         apothecaryStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ apothecaryInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Apothecary!</p>").insertAfter("#rebuild-placeholder");
         return;
     }
@@ -513,7 +537,36 @@ function apothecaryWood() {
         toggleApothecary();
         playerStats.gold += apothecaryStats.gold;
         apothecaryStats.rebuilt = 1;
+        ProductionFacilitiesRebuilt();
+        allRebuilt();
         $("<p> "+ apothecaryInfo.owner +" gives you a little something as a thankyou. You have successfully rebuilt Apothecary!</p>").insertAfter("#rebuild-placeholder");
         return;
+    }
+}
+function allRebuilt() {
+    switch(janceStats.rebuilt && renoStats.rebuilt && greyStats.rebuilt && thaneStats.rebuilt && hildtStats.rebuilt && weaponSmithyStats.rebuilt && armorSmithyStats.rebuilt && apothecaryStats.rebuilt){
+        case 1:
+            allEndoraRebuilt = true;
+            switch(allEndoraRebuilt){
+                case true:
+                    toggleRebuildButton();
+                    toggleRebuildMenu();
+                    $("<p>The townsfolk are singing your praises for all you have helped rebuild. Would you like to visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
+                    break;
+            }
+            break;
+    }
+}
+function ProductionFacilitiesRebuilt() {
+    switch(weaponSmithyStats.rebuilt || armorSmithyStats.rebuilt || apothecaryStats.rebuilt) {
+        case 1:
+            prodFacRebuilt = true;
+            switch(prodFacRebuilt) {
+                case true:
+                    toggleProductionButton();
+                    $("<p>The option to use any production facilities you helped rebuild has now unlocked. Please click the production button to do that, or would you rather visit the Shop, go back to Battle (b), or Continue to the Town Gate (c)?</p>").insertAfter("#placeholder");
+                    break;
+            }
+            break;
     }
 }

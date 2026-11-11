@@ -77,9 +77,13 @@ let mageWeapon2 = new Equipment ("Spark Staff", 0, 20, 15, 0, .25, 0, 10, 0, 1, 
 let comfortableBoxers = new Equipment ("Comfortable Boxers", 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 5, 1);
 let comfortablePanties = new Equipment ("Comfortable Panties", 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 5, 1);
 
+//Special Equipment >
+// Warrior:
+let craftedWarriorsRespite = new Equipment ("Warrior's Respite", 999999, 999, 999999, 999999, 999, 999, 999, 0, 0, 0, 0, 999999999);
+
 // Equipment Arrays >
 //Warrior:
-let equipArray = [dilapidatedHelmet, dilapidatedArmor, dilapidatedHand, dilapidatedBelt, dilapidatedLeg, dilapidatedFoot, dilapidatedSword, dilapidatedShield, poorHelmet, poorArmor, poorHand, poorBelt, poorLeg, poorFoot, poorBow, poorArrows, nonHelmet, nonArmor, nonHand, nonBelt, nonLeg, nonFoot, nonStaff, ironHelmet, ironArmor, ironHand, ironBelt, ironLeg, ironFoot, ironSword, ironShield, leatherHelmet, leatherArmor, leatherHand, leatherBelt, leatherLeg, leatherFoot, ironBow, ironArrows, mageHelmet,  mageArmor, mageHand, mageBelt, mageLeg, mageFoot, mageWeapon, mageWeapon1, mageWeapon2, comfortableBoxers, comfortablePanties, healthPotion, staminaPotion, manaPotion];
+let equipArray = [dilapidatedHelmet, dilapidatedArmor, dilapidatedHand, dilapidatedBelt, dilapidatedLeg, dilapidatedFoot, dilapidatedSword, dilapidatedShield, poorHelmet, poorArmor, poorHand, poorBelt, poorLeg, poorFoot, poorBow, poorArrows, nonHelmet, nonArmor, nonHand, nonBelt, nonLeg, nonFoot, nonStaff, ironHelmet, ironArmor, ironHand, ironBelt, ironLeg, ironFoot, ironSword, ironShield, leatherHelmet, leatherArmor, leatherHand, leatherBelt, leatherLeg, leatherFoot, ironBow, ironArrows, mageHelmet,  mageArmor, mageHand, mageBelt, mageLeg, mageFoot, mageWeapon, mageWeapon1, mageWeapon2, craftedWarriorsRespite, comfortableBoxers, comfortablePanties, healthPotion, staminaPotion, manaPotion];
 
 let callEquipArray;
 let equippedItems = [];

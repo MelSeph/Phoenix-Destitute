@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Phoenix Destitute</title>
-        <link rel="stylesheet" href="css/Reset.css">
+        <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/index.css">
     </head>
@@ -25,8 +25,39 @@
             <ul class="btn btn-toggle-gather" onclick="toggleGatherMenu()"><li>Gathering</li></ul>
             <ul class="btn btn-toggle-rebuild" onclick="toggleRebuildMenu()"><li>Rebuilding</li></ul>
             <ul class="btn btn-toggle-production" onclick="toggleProductionMenu()"><li>Production</li></ul>
+            <ul class="btn btn-toggle-cheat" onclick="toggleCheatMenu()"><li>Cheats</li></ul>
         </div>
         <!-- End toggle buttons -->
+        <!-- Opens the Cheats Console -->
+        <section class="cheat-console cheat-wrapper">
+            <div class="cheat-console"><h2>Cheat Console</h2></div>
+            <div>
+                <ul class="cheat-body-row">
+                    <ul class="cheat-console cheat-body-size">
+                        <li class="cheat-console">Money Money Money</li>
+                        <li>All The Money: <button class="btn btn-gold" onclick="MoneyCheat()">Gold</button></li>
+                    </ul>
+                    <ul class="cheat-console cheat-body-size">
+                        <li class="cheat-console">Productions Boon</li>
+                        <li>All The Resources: <button class="btn btn-resources" onclick="ResourceCheat()">Resources</button></li>
+                        <li>All The Potions: <button class="btn btn-potion" onclick="PotionCheat()">Potions</button></li>
+                        <li>All The Beast Drops: <button class="btn btn-drops" onclick="BeastDropsCheat()">Drops</button></li>
+                        <li>All The Production Items: <button class="btn btn-prod" onclick="ProductionItemsCheat()">Production</button></li>
+                    </ul>
+                    <ul class="cheat-console cheat-body-size">
+                        <li class="cheat-console">Path Of Gods</li>
+                        <li>All The Stats: <button class="btn btn-stats" onclick="StatCheat()">Stats</button></li>
+                        <li>All The Experience: <button class="btn btn-exp" onclick="ExperienceCheat()">Stats</button></li>
+                    </ul>
+                    <ul class="cheat-console cheat-body-size">
+                        <li class="cheat-console">Delux Appartments In The Sky</li>
+                        <li>All The Endora Resedences Rebuilt: <button class="btn btn-stats" onclick="EndoraResedencesRebuilt()">Rebuild</button></li>
+                        <li>All The Endora Businesses Rebuilt: <button class="btn btn-stats" onclick="EndoraBusinessesRebuilt()">Rebuild</button></li>
+                    </ul>
+                </ul>
+            </div> 
+        </section>
+        <!-- End Cheats Console -->
         <!-- This is the console/Game box -->
         <main>
             <div class="wrapper-main-row">
@@ -404,10 +435,15 @@
                         <div class="smithy-wrapper endora-secret-border forge-visible">
                             <h3 class="endora-secret-border">
                                 Welcome to the Forge! </br>
-                                - For every 1 forged ingot, 3 ore is consumed. -
                             </h3>
-                            <li><span id="materialName.metal">N/A</span>: Forged: <span id="materialStats.forgedMetal">0</span> <button class="btn-metal" onclick="Smelt()">Smelt</button></li>
-                            <li><span id="materialName.magiCore">N/A</span>: Forged: <span id="materialStats.condensedMagiCore">0</span> <button class="btn-metal" onclick="Condense()">Condense</button></li>
+                            <li><span id="materialName.metal">N/A</span>: Forged: <span id="materialStats.forgedMetal">0</span> <button class="btn-metal" onclick="Smelt()">Smelt</button> Ore Cost: <span id="materialStats.metalCost">0</span></li>
+                            <li><span id="materialName.magiCore">N/A</span>: Forged:<span id="materialStats.condensedCore">0</span> <button class="btn-metal" onclick="Condense()">Condense</button> Core Cost:<span id="materialStats.magiCoreCost">0</span></li>
+                            <div class="respite">
+                                <li class="respite"><span id="creationName.warriorRespiteCore">N/A</span>: Forged:<span id="creationStats.warriorRespiteCore">0</span> <button class="btn-metal" onclick="warriorsWeaponCreationCore()">Forge</button> Condensed MagiCore Cost:<span id="creationStats.warriorRespiteCoreMagiCoreCoreCost">0</span>/Metal Cost:<span id="creationStats.warriorRespiteCoreForgedMetalCoreCost">0</span></li>
+                                <li class="respite"><span id="creationName.warriorRespiteHilt">N/A</span>: Forged:<span id="creationStats.warriorRespiteHilt">0</span> <button class="btn-metal" onclick="warriorsWeaponCreationHilt()">Forge</button> Condensed MagiCore Cost:<span id="creationStats.warriorRespiteCoreMagiCoreHiltCost">0</span>/Metal Cost:<span id="creationStats.warriorRespiteCoreForgedMetalHiltCost">0</span></li>
+                                <li class="respite"><span id="creationName.warriorRespiteSheath">N/A</span>: Forge:<span id="creationStats.warriorRespiteSheath">0</span> <button class="btn-metal" onclick="warriorsWeaponCreationSheath()">Forge</button> Condensed MagiCore Cost:<span id="creationStats.warriorRespiteCoreMagiCoreSheathCost">0</span>/Metal Cost:<span id="creationStats.warriorRespiteCoreForgedForgedMetalSheathCost">0</span>/Etched Cloth Cost:<span id="creationStats.warriorRespiteCoreEtchedSilkClothCost">0</span></li>
+                                <li class="respite"><span id="creationName.warriorRespite">N/A</span> Forge:<span id="creationStats.warriorRespite">0</span> <button class="btn-metal" onclick="warriorsRespite()">Forge</button></li>
+                            </div>
                         </div>
                         <div class="tanner-wrapper endora-secret-border tanner-visible">
                             <h3 class="endora-secret-border">
@@ -415,20 +451,25 @@
                                 - For every 1 tanned leather, 3 hide is consumed. -
                             </h3>
                             <li><span id="materialName.leather">N/A</span>: Tanned: <span id="materialStats.tannedLeather">0</span> <button class="btn-leather" onclick="Tan()">Tan</button></li>
-                            <li><span id="materialName.silkCloth">N/A</span>: Tanned: <span id="materialStats.etchedSilkCloth">0</span> <button class="btn-leather" onclick="Spindle()">Spin</button></li>
+                            <li><span id="materialName.silkCloth">N/A</span>: Tanned: <span id="materialStats.etchedCloth">0</span> <button class="btn-leather" onclick="Spindle()">Spin</button></li>
                         </div>
                         <div class="apothecary-wrapper endora-secret-border apothecary-visible">
                             <h3 class="endora-secret-border">
                                 Welcome to the Apothecary! </br>
                                 - I haven't worked this out yet. -
                             </h3>
-                            <li><span id="materialName.leather">N/A</span>: Concocted: <span id="materialStats.leather">0</span> <button class="btn-potion" onclick="Brew()">Brew</button></li>
+                            <li><span id="materialName.leather">N/A</span>: Concocted: <span id="materialStats.tannedLeather">0</span> <button class="btn-potion" onclick="Brew()">Brew</button></li>
                         </div>
                     </div>
                 </div>
             </ul>
         </section>
         <!-- End Endora Hidden Menu -->
+        <!-- Map -->
+        <section class="map map-wrapper map-boarder">
+            
+        </section>
+        <!-- End Map -->
         <!-- Experience bar -->
         <section>
             <ul class="level-wrapper">
@@ -462,6 +503,8 @@
     <script src="js/building.js"></script>
     <script src="js/levelup.js"></script>
     <script src="js/shop.js"></script>
+    <script src="js/creation.js"></script>
+    <script src="js/cheats.js"></script>
     <script src="js/endorahiddenmenu.js"></script>
     <script src="js/updateshop.js"></script>
     <script src="js/updatebuildings.js"></script>

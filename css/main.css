@@ -311,6 +311,61 @@ span {
 .btn-potion:hover {
     opacity: 0.5;
 }
+.btn-toggle-cheat {
+    margin-left: auto;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(254, 0, 0, 0.616));
+    cursor: pointer;
+    display: none;
+}
+.btn-gold {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(238, 255, 0, 0.966));
+    cursor: pointer;
+
+}
+.btn-resources {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(1, 147, 18, 0.833));
+    cursor: pointer;
+}
+.btn-stats {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(147, 67, 1, 0.833));
+    cursor: pointer;
+}
+.btn-drops {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(1, 113, 147, 0.833));
+    cursor: pointer;
+}
+.btn-prod {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(101, 1, 147, 0.833));
+    cursor: pointer;
+}
+.btn-exp {
+    width: 65px;
+    height: 20px;
+    margin: 2.5px 2.5px;
+    border: 2px ridge #000000;
+    background: linear-gradient(25deg, rgb(139, 66, 66, 0), rgba(1, 3, 147, 0.833));
+    cursor: pointer;
+}
 /* End of Buttons */
 /* Flex Directions */
 .flex-row {

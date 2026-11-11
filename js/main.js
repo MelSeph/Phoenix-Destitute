@@ -1,5 +1,5 @@
 //These are variables declared in the global scope because they need to be called outside the main game function
-let version = document.querySelector(".version").innerHTML = "0.0.1";
+let version = document.querySelector(".version").innerHTML = "0.0.2";
 let input;
 let mainArea = 'Endora';
 $("#console").fadeIn(3000); //Console fades in slowly.
@@ -41,6 +41,7 @@ $(document).ready(function() {
             }
             while (playerInfo.area == "Set Class") {
 				setClass();
+                toggleCheatButton();
                 return;
             }
             // This concludes the character creation part

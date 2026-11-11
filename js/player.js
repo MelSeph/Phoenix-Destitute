@@ -77,7 +77,7 @@ function ClassRole (classType, health, mana, strength, defense, endurance, agili
 }
 
 let playerStats = new HeroStats(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-let playerInfo = new HeroInfo("Pre-Start", "None", "Spirit", "Undetermined One", "Head", "Body", "Fists", "Waist", "Legs", "Feet", "Nothing", "Nothing", "Naked", "Naked", "None", "Friendless", "Endora");
+let playerInfo = new HeroInfo("Pre-Start", "None", "Spirit", "Undetermined One", "Head", "Body", "Fists", "Waist", "Legs", "Feet", "Right Hand", "Left Hand", "Naked", "Naked", "None", "Friendless", "Endora");
 let male = new GenderRole ('Male', 2, 1, 2, 2, 2, 1, 1, 2, "Moth-Eaten Shirt", "Tighty-Whiteys", "Hairy Legs", "Duncan");
 let female = new GenderRole ('Female', 1, 2, 1, 1, 1, 1, 2, 2, "Barely-There Shirt", "Granny Panties", "Smooth Legs", "Morgana");
 let warrior = new ClassRole ('Warrior', 5, 1, 3, 3, 30, 1, 1, 10, 5, 10, 0);

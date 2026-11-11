@@ -1,3 +1,25 @@
+/* Cheat Console */
+.cheat-wrapper {
+    width: calc(100% - 5px);
+    margin-left: 2.5px;
+    display: none;
+}
+.cheat-console {
+    text-align: center;
+    border: 5px ridge #000000;
+    background: linear-gradient(-45deg, rgb(128, 128, 128, 0), rgb(128, 128, 128, 1));
+}
+.cheat-body-row {
+    display: flex;
+    flex-direction: row;
+}
+.cheat-body-size {
+    width: 33.32%;
+}
+.cheat-console ul li {
+    margin: 0px 0px;
+}
+
 /* Container for the console and Attribute boxes */
 main {
     width: calc(100% - 4.5px);
@@ -25,15 +47,8 @@ main {
 .console-box {
     display: block;
     width: 100%;
-    /* Actual max and min height */
     min-height: 214px;
     max-height: 214px;
-    /* Test max and min height - Gender Benefits */
-    /* min-height: 285px;
-    max-height: 285px; */
-    /* Test max and min height - Class Benefits */
-    /* min-height: 462px;
-    max-height: 462px; */
     overflow-y: auto;
     border: 5px ridge #615F5F;
     background: linear-gradient(-45deg, #000, #615F5F);
@@ -625,3 +640,13 @@ section {
     display: none;
 }
 /* End Endora Hidden Menu */
+/* Map */
+.map-wrapper {
+    margin-left: 3px;
+    text-align: center;
+    width: calc(100% - 7px);
+}
+.map-boarder {
+    border: 5px ridge #03e8f8;
+}
+/* End Map */
